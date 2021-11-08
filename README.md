@@ -1,5 +1,5 @@
 # Mayfeild-County
-Mayfeild County is a text based survival game I've been working on since around June of 2020. The premise is that everyone on earth but the player disappears and the player has to survive in an empty world. The player must stave off starvation, infection and wild animals, as well as keep from going insane, while looting, fishing and hunting in the abandoned township of Mayfeild County.
+Mayfeild County is a text based survival game I've been working on since around June of 2021. The premise is that everyone on earth but the player disappears and the player has to survive in an empty world. The player must stave off starvation, infection and wild animals, as well as keep from going insane, while looting, fishing and hunting in the abandoned township of Mayfeild County.
 
 The project is open source, and only supports windows PC's. Written in C++.
 
