@@ -1,0 +1,8 @@
+﻿  MayfieldCounty.cpp
+C:\Users\Liam\Desktop\Mayfield County\MayfieldCounty\Text.h(18,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Liam\Desktop\Mayfield County\MayfieldCounty\Item.h(888,1): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Liam\Desktop\Mayfield County\MayfieldCounty\Item.h(944,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Liam\Desktop\Mayfield County\MayfieldCounty\Item.h(995,7): warning C4101: 'itemQuery': unreferenced local variable
+C:\Users\Liam\Desktop\Mayfield County\MayfieldCounty\PlayerAction.h(50): warning C4715: 'PlayerAction::localRarity': not all control paths return a value
+C:\Users\Liam\Desktop\Mayfield County\MayfieldCounty\RandomEvent.h(36): warning C4715: 'randomEvent::eventRarity': not all control paths return a value
+  MayfieldCounty.vcxproj -> C:\Users\Liam\Desktop\Mayfield County\MayfieldCounty\Debug\MayfieldCounty.exe
