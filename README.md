@@ -5,7 +5,7 @@ The project is open source, and only supports windows PC's. Written in C++.
 
 If you don't have visual studio, or don't care about the code and just want to run the game, here's how:
 
-1. Go to the master section on the last page (middle of the page at the left above where this readme is) and download the files, or at least just the ones that end in .exe and .wav
-2. Put all the files ending in .exe and .wav in a folder together somewhere.
+1. Go to 'master' via the dropdown box on this page (middle of the page at the left above where this readme section is) and download the files, or at least just the ones that end in .exe and .wav
+2. Put all the files ending in .exe and .wav in a folder together somewhere. The rest are not needed to run the game.
 3. Double click the exe and the game should run.
 4. Antivirus programs tend to pop up and scan the game, I'm not sure why they do that but I promise it's safe.
