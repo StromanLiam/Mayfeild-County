@@ -17,6 +17,7 @@ void intro();
 void sleep(Player& player, Day& day, bool dayOff);
 //void randomEvent(Player& player, Item& bullet, Item& dogMeat, Day& day);
 void printChangeLog();
+void doFirstOfWinter(Player& player);
 
 Item cannedVegitables = Item::initialiseCannedVegitables(); // renamed to tomatos 
 Item waterJug = Item::initialiseWaterJug();
@@ -90,6 +91,8 @@ int main()
     Player player;
     Day day;
 
+    //player.sanity = 0;
+
     //day.seasonNum = 4;
    // day.season = "winter";
 
@@ -124,18 +127,18 @@ int main()
 
             if (rand() % 5 == 0)
             {
-                Text::printOut(".. and " + player.catName + " brought you a dead mouse.\n");
+                Text::printOut(".. and " + player.catName + " brought you a dead mouse.\n", player.getSanity());
 
 
-                Text::printOut(player.cat + "\n\n");
+                Text::printOut(player.cat + "\n\n", player.getSanity());
 
                 Text::printOut("Found (1) mice.\n");
 
                 deadMouse.amount += 1;
 
-                Text::printOut("\tYou have (" + to_string(deadMouse.amount) + ") total.\n");
+                Text::printOut("\tYou have (" + to_string(deadMouse.amount) + ") total.\n", player.getSanity());
 
-                Text::printOut("\n... hopefully it doesn't come to this, but it is better than starving.\n");
+                Text::printOut("\n... hopefully it doesn't come to this, but it is better than starving.\n", player.getSanity());
 
                 PlaySound(TEXT("itemize.wav"), NULL, SND_ASYNC);
 
@@ -153,18 +156,18 @@ int main()
             {
                 system("CLS");
 
-                Text::printOut("It is raining today.\n");
+                Text::printOut("It is raining today.\n", player.getSanity());
 
                 day.isRaining = true;
 
                 amountAquired = (rand() % 3) + 3;
 
 
-                Text::printOut("Collected (" + to_string(amountAquired) + ") Jugs of water.\n");
+                Text::printOut("Collected (" + to_string(amountAquired) + ") Jugs of water.\n", player.getSanity());
 
                 waterJug.amount += amountAquired;
 
-                Text::printOut("\tYou have (" + to_string(waterJug.amount) + ") total.\n");
+                Text::printOut("\tYou have (" + to_string(waterJug.amount) + ") total.\n", player.getSanity());
 
                 PlaySound(TEXT("itemize.wav"), NULL, SND_ASYNC);
 
@@ -180,17 +183,17 @@ int main()
             {
                 system("CLS");
 
-                Text::printOut("It is raining today.\n");
+                Text::printOut("It is raining today.\n", player.getSanity());
 
                 day.isRaining = true;
 
                 amountAquired = (rand() % 3) + 3;
 
-                Text::printOut("Collected (" + to_string(amountAquired) + ") Jugs of water.\n");
+                Text::printOut("Collected (" + to_string(amountAquired) + ") Jugs of water.\n", player.getSanity());
 
                 waterJug.amount += amountAquired;
 
-                Text::printOut("\tYou have (" + to_string(waterJug.amount) + ") total.\n");
+                Text::printOut("\tYou have (" + to_string(waterJug.amount) + ") total.\n", player.getSanity());
 
                 PlaySound(TEXT("itemize.wav"), NULL, SND_ASYNC);
 
@@ -206,17 +209,17 @@ int main()
             {
                 system("CLS");
 
-                Text::printOut("It is raining today.\n");
+                Text::printOut("It is raining today.\n", player.getSanity());
 
                 day.isRaining = true;
 
                 amountAquired = (rand() % 3) + 3;
 
-                Text::printOut("Collected (" + to_string(amountAquired) + ") Jugs of water.\n");
+                Text::printOut("Collected (" + to_string(amountAquired) + ") Jugs of water.\n", player.getSanity());
 
                 waterJug.amount += amountAquired;
 
-                Text::printOut("\tYou have (" + to_string(waterJug.amount) + ") total.\n");
+                Text::printOut("\tYou have (" + to_string(waterJug.amount) + ") total.\n", player.getSanity());
 
                 PlaySound(TEXT("itemize.wav"), NULL, SND_ASYNC);
 
@@ -243,14 +246,14 @@ int main()
                 system("CLS");
 
                 amountAquired = 3;
-                Text::printOut("There is snow on the ground.\n");
-                Text::printOut("You fill " + to_string(amountAquired) + " jugs with snow and bring them inside to melt.\n");
+                Text::printOut("There is snow on the ground.\n", player.getSanity());
+                Text::printOut("You fill " + to_string(amountAquired) + " jugs with snow and bring them inside to melt.\n", player.getSanity());
 
-                Text::printOut("Collected (" + to_string(amountAquired) + ") Jugs of water.\n");
+                Text::printOut("Collected (" + to_string(amountAquired) + ") Jugs of water.\n", player.getSanity());
 
                 waterJug.amount += amountAquired;
 
-                Text::printOut("\tYou have (" + to_string(waterJug.amount) + ") total.\n");
+                Text::printOut("\tYou have (" + to_string(waterJug.amount) + ") total.\n", player.getSanity());
 
                 PlaySound(TEXT("itemize.wav"), NULL, SND_ASYNC);
 
@@ -295,6 +298,9 @@ int main()
 
         if (day.seasonNum == 4)
         {
+            if (day.dayNumber == 1) 
+            { doFirstOfWinter(player); }
+
             if (rand() % 3 == 0)
             {
                 day.isCold = true;
@@ -322,6 +328,8 @@ int main()
         }
         
         locationPTR = &home;
+
+        
 
         doDay(player, day, &locationPTR, &prevLocationPTR);
 
@@ -579,9 +587,21 @@ void doCold(Player& player, Day& day)
     day.dailyInformation += "It's bitterly cold today.\n";
 }
 
+void doFirstOfWinter(Player& player)
+{
+    Text::printOut("FIRST OF WINTER\n\n");
+    Text::printOut("The days have grown short and the wind has become cold.\n");
+    Text::printOut("You look out from your candle-lit home to see the first flakes of snow.\n");
+    Text::printOut("Food grows more scarce.\n");
+    Text::printOut("\nNOTICE: You now have a 'warmth' score to pay attention to.\n");
+    Text::printOut("Your home will keep you warm, but be cautious while searching for food.\n");
+    system("PAUSE");
+    system("CLS");
+}
+
 void playerHangover(Player& player, Day& day)
 {
-    day.dailyInformation += "You're a bit hungover today\n";
+    day.dailyInformation += "You're a bit hungover today.\n";
     day.dailyInformation += "\t-15 energy\n";
     day.dailyInformation += "\t-15 happiness\n";
 
@@ -592,6 +612,11 @@ void playerHangover(Player& player, Day& day)
     player.happiness = Player::percentRestraint(player.happiness);
 
     player.hasHangover = false;
+}
+
+void playerInsanity(Player& player, Day& day)
+{
+    day.dailyInformation += "You're beginning to lose your mind.\n";
 }
 
 
@@ -698,6 +723,11 @@ void doDay(Player& player, Day& day, Location** locationPTR, Location** prevLoca
                 playerHangover(player, day);
             }
 
+            if (player.sanity <= 50)
+            {
+                playerInsanity(player, day);
+            }
+
             if (player.hasBotulism)
             {
                 playerBotulism(player, day);
@@ -779,29 +809,29 @@ void doDay(Player& player, Day& day, Location** locationPTR, Location** prevLoca
 
         }
 
-        Text::printOut(day.season + " " + to_string(day.dayNumber) + " year " + to_string(day.year) + ", day " + to_string(day.totalDays) + "\n");
+        Text::printOut(day.season + " " + to_string(day.dayNumber) + " year " + to_string(day.year) + ", day " + to_string(day.totalDays) + "\n", player.getSanity());
 
         if (day.seasonNum == 4)
         {
-            Text::printOut("Energy " + to_string(player.energy) + "% Hunger " + to_string(player.hunger) + "% Thirst " + to_string(player.thirst) + "% Happiness " + to_string(player.happiness) + "% Sanity " + to_string(player.sanity) + "% Warmth " + to_string(player.warmth) + "%\n");
+            Text::printOut("Energy " + to_string(player.energy) + "% Hunger " + to_string(player.hunger) + "% Thirst " + to_string(player.thirst) + "% Happiness " + to_string(player.happiness) + "% Sanity " + to_string(player.sanity) + "% Warmth " + to_string(player.warmth) + "%\n", player.getSanity());
         }
         else
         {
-            Text::printOut("Energy " + to_string(player.energy) + "% Hunger " + to_string(player.hunger) + "% Thirst " + to_string(player.thirst) + "% Happiness " + to_string(player.happiness) + "% Sanity " + to_string(player.sanity) + "%" + "\n");
+            Text::printOut("Energy " + to_string(player.energy) + "% Hunger " + to_string(player.hunger) + "% Thirst " + to_string(player.thirst) + "% Happiness " + to_string(player.happiness) + "% Sanity " + to_string(player.sanity) + "%" + "\n", player.getSanity());
         }
 
 
 
 
-        Text::printOut("Current Location: " + (*locationPTR)->locationName + ".\n\n");
+        Text::printOut("Current Location: " + (*locationPTR)->locationName + ".\n\n", player.getSanity());
 
 
 
         if (day.drunkInformation != "")
-            Text::printOut(day.drunkInformation + "\n\n");
+            Text::printOut(day.drunkInformation + "\n\n", player.getSanity());
 
         if (day.dailyInformation != "")
-            Text::printOut(day.dailyInformation + "\n\n");
+            Text::printOut(day.dailyInformation + "\n\n", player.getSanity());
 
 
         /*
@@ -814,48 +844,48 @@ void doDay(Player& player, Day& day, Location** locationPTR, Location** prevLoca
        * In the case that accessing the strings in day becomes a problem because they're being used in another class, they may have to be moved to player. Or something.
        */
 
-        Text::printOut("What will you do today?\n\n");
+        Text::printOut("What will you do today?\n\n", player.getSanity());
 
         if (day.seasonNum == 4 && day.isCold)
         {
-            Text::printOut("1. Search for supplies\n\t-20 energy\n\t-30 warmth\n\n");
-            Text::printOut("2. Hunt\n\t-30 energy\n\t-30 warmth\n\n");
-            Text::printOut("3. Go fishing\n\t-20 energy\n\t-30 warmth\n\n");
-            Text::printOut("4. Check supplies\n\n");
+            Text::printOut("1. Search for supplies\n\t-20 energy\n\t-30 warmth\n\n", player.getSanity());
+            Text::printOut("2. Hunt\n\t-30 energy\n\t-30 warmth\n\n", player.getSanity());
+            Text::printOut("3. Go fishing\n\t-20 energy\n\t-30 warmth\n\n", player.getSanity());
+            Text::printOut("4. Check supplies\n\n", player.getSanity());
         }
         else if (day.seasonNum == 4)
         {
-            Text::printOut("1. Search for supplies\n\t-20 energy\n\t-25 warmth\n\n");
-            Text::printOut("2. Hunt\n\t-30 energy\n\t-25 warmth\n\n");
-            Text::printOut("3. Go fishing\n\t-20 energy\n\t-25 warmth\n\n");
-            Text::printOut("4. Check supplies\n\n");
+            Text::printOut("1. Search for supplies\n\t-20 energy\n\t-25 warmth\n\n", player.getSanity());
+            Text::printOut("2. Hunt\n\t-30 energy\n\t-25 warmth\n\n", player.getSanity());
+            Text::printOut("3. Go fishing\n\t-20 energy\n\t-25 warmth\n\n", player.getSanity());
+            Text::printOut("4. Check supplies\n\n", player.getSanity());
         }
         else
         {
-            Text::printOut("1. Search for supplies\n\t-20 energy\n\n");
-            Text::printOut("2. Hunt\n\t-30 energy\n\n");
-            Text::printOut("3. Go fishing\n\t-20 energy\n\n");
-            Text::printOut("4. Check supplies\n\n");
+            Text::printOut("1. Search for supplies\n\t-20 energy\n\n", player.getSanity());
+            Text::printOut("2. Hunt\n\t-30 energy\n\n", player.getSanity());
+            Text::printOut("3. Go fishing\n\t-20 energy\n\n", player.getSanity());
+            Text::printOut("4. Check supplies\n\n", player.getSanity());
         }
 
 
 
         if (dayOffValid && day.dayNumber > 1)
         {
-            Text::printOut("5. Take a day off\n\t+25 sanity\n\n");
+            Text::printOut("5. Take a day off\n\t+25 sanity\n\n", player.getSanity());
         }
         else
         {
-            Text::printOut("5. Rest for the night\n\n");
+            Text::printOut("5. Rest for the night\n\n", player.getSanity());
         }
 
-        Text::printOut("6. Change location\n\n");
-        Text::printOut("7. (Info) What's new?\n\n");
+        Text::printOut("6. Change location\n\n", player.getSanity());
+        Text::printOut("7. (Info) What's new?\n\n", player.getSanity());
 
 
         int noChoices = 7;
 
-        Text::printOut("\nEnter number for choice.\n");
+        Text::printOut("\nEnter number for choice.\n", player.getSanity());
         Text::printOut(">");
         cin >> choice;
         cin.ignore(1000, '\n');
@@ -884,18 +914,18 @@ void doDay(Player& player, Day& day, Location** locationPTR, Location** prevLoca
             if ((*locationPTR)->locationName == "Home")
             {
                 //system("CLS");
-                Text::printOut("You havn't picked somewhere to loot.\nSelect a location to continue.\n\n");
+                Text::printOut("You havn't picked somewhere to loot.\nSelect a location to continue.\n\n", player.getSanity());
 
                 if (*prevLocationPTR != nullptr)
                 {
                     char ans;
                     //system("pause");
-                    Text::printOut("Would you like to continue from where you left off yesterday (" + (*prevLocationPTR)->locationName + ")?\nEnter Y/N >");
+                    Text::printOut("Would you like to continue from where you left off yesterday (" + (*prevLocationPTR)->locationName + ")?\nEnter Y/N >", player.getSanity());
                     cin >> ans;
                     PlaySound(TEXT("menu-navigate-01.wav"), NULL, SND_ASYNC);
                     while (cin.fail() || (toupper(ans) != 'Y' && toupper(ans) != 'N'))
                     {
-                        Text::printOut("Invalid entry, enter only Y or N.");
+                        Text::printOut("Invalid entry, enter only Y or N.", player.getSanity());
                         cin >> ans;
                         PlaySound(TEXT("menu-navigate-01.wav"), NULL, SND_ASYNC);
                     }
@@ -906,9 +936,9 @@ void doDay(Player& player, Day& day, Location** locationPTR, Location** prevLoca
                     {
                         //system("pause");
 
-                        *locationPTR = Location::selectLocation(*locationPTR, lensborough, mayfeildCentre, frontSt);
+                        *locationPTR = Location::selectLocation(player, *locationPTR, lensborough, mayfeildCentre, frontSt);
 
-                        (*locationPTR)->locationInfo(day);
+                        (*locationPTR)->locationInfo(player, day);
                     }
                     else if (toupper(ans) == 'Y')
                     {
@@ -919,9 +949,9 @@ void doDay(Player& player, Day& day, Location** locationPTR, Location** prevLoca
                 {
                     system("pause");
 
-                    *locationPTR = Location::selectLocation(*locationPTR, lensborough, mayfeildCentre, frontSt);
+                    *locationPTR = Location::selectLocation(player, *locationPTR, lensborough, mayfeildCentre, frontSt);
 
-                    (*locationPTR)->locationInfo(day);
+                    (*locationPTR)->locationInfo(player, day);
                 }
 
                 system("pause");
@@ -930,7 +960,7 @@ void doDay(Player& player, Day& day, Location** locationPTR, Location** prevLoca
 
             if (player.energy < 20)
             {
-                Text::printOut("You're too exhausted to loot right now.\n\n");
+                Text::printOut("You're too exhausted to loot right now.\n\n", player.getSanity());
                 system("pause");
                 break;
             }
@@ -974,18 +1004,18 @@ void doDay(Player& player, Day& day, Location** locationPTR, Location** prevLoca
             if ((*locationPTR)->locationName == "Home")
             {
                 system("CLS");
-                Text::printOut("You havn't picked somewhere to hunt.\nSelect a location to continue.\n\n");
+                Text::printOut("You havn't picked somewhere to hunt.\nSelect a location to continue.\n\n", player.getSanity());
 
                 if (*prevLocationPTR != nullptr)
                 {
                     char ans;
                     //system("pause");
-                    Text::printOut("Would you like to continue from where you left off yesterday (" + (*prevLocationPTR)->locationName + ")?\nEnter Y/N >");
+                    Text::printOut("Would you like to continue from where you left off yesterday (" + (*prevLocationPTR)->locationName + ")?\nEnter Y/N >", player.getSanity());
                     cin >> ans;
                     PlaySound(TEXT("menu-navigate-01.wav"), NULL, SND_ASYNC);
                     while (cin.fail() || (toupper(ans) != 'Y' && toupper(ans) != 'N'))
                     {
-                        Text::printOut("Invalid entry, enter only Y or N.");
+                        Text::printOut("Invalid entry, enter only Y or N.", player.getSanity());
                         cin >> ans;
                         PlaySound(TEXT("menu-navigate-01.wav"), NULL, SND_ASYNC);
                     }
@@ -996,9 +1026,9 @@ void doDay(Player& player, Day& day, Location** locationPTR, Location** prevLoca
                     {
                         //system("pause");
 
-                        *locationPTR = Location::selectLocation(*locationPTR, lensborough, mayfeildCentre, frontSt);
+                        *locationPTR = Location::selectLocation(player, *locationPTR, lensborough, mayfeildCentre, frontSt);
 
-                        (*locationPTR)->locationInfo(day);
+                        (*locationPTR)->locationInfo(player, day);
                     }
                     else if (toupper(ans) == 'Y')
                     {
@@ -1009,9 +1039,9 @@ void doDay(Player& player, Day& day, Location** locationPTR, Location** prevLoca
                 {
                     //system("pause");
 
-                    *locationPTR = Location::selectLocation(*locationPTR, lensborough, mayfeildCentre, frontSt);
+                    *locationPTR = Location::selectLocation(player, *locationPTR, lensborough, mayfeildCentre, frontSt);
 
-                    (*locationPTR)->locationInfo(day);
+                    (*locationPTR)->locationInfo(player, day);
                 }
 
                 system("pause");
@@ -1020,21 +1050,21 @@ void doDay(Player& player, Day& day, Location** locationPTR, Location** prevLoca
 
             if (player.energy < 30)
             {
-                Text::printOut("You're too exhausted to hunt right now.\n\n");
+                Text::printOut("You're too exhausted to hunt right now.\n\n", player.getSanity());
                 system("pause");
                 break;
             }
 
             if (!player.hasHuntingRifle)
             {
-                Text::printOut("You don't have a hunting rifle.\n\n");
+                Text::printOut("You don't have a hunting rifle.\n\n", player.getSanity());
                 system("pause");
                 break;
             }
 
             if (bullet.amount < 1)
             {
-                Text::printOut("You're all out of bullets.\n\n");
+                Text::printOut("You're all out of bullets.\n\n", player.getSanity());
                 system("pause");
                 break;
             }
@@ -1075,12 +1105,12 @@ void doDay(Player& player, Day& day, Location** locationPTR, Location** prevLoca
             if ((*locationPTR)->locationName == "Home")
             {
                 system("CLS");
-                Text::printOut("You havn't picked somewhere to fish.\nSelect a location to continue.\n\n");
+                Text::printOut("You havn't picked somewhere to fish.\nSelect a location to continue.\n\n", player.getSanity());
 
                 if (*prevLocationPTR != nullptr)
                 {
                     char ans;
-                    Text::printOut("Would you like to continue from where you left off yesterday (" + (*prevLocationPTR)->locationName +")?\nEnter Y/N >");
+                    Text::printOut("Would you like to continue from where you left off yesterday (" + (*prevLocationPTR)->locationName +")?\nEnter Y/N >", player.getSanity());
                     cin >> ans;
                     PlaySound(TEXT("menu-navigate-01.wav"), NULL, SND_ASYNC);
                     while (cin.fail() || (toupper(ans) != 'Y' && toupper(ans) != 'N'))
@@ -1096,9 +1126,9 @@ void doDay(Player& player, Day& day, Location** locationPTR, Location** prevLoca
                     {
                         
 
-                        *locationPTR = Location::selectLocation(*locationPTR, lensborough, mayfeildCentre, frontSt);
+                        *locationPTR = Location::selectLocation(player, *locationPTR, lensborough, mayfeildCentre, frontSt);
 
-                        (*locationPTR)->locationInfo(day);
+                        (*locationPTR)->locationInfo(player, day);
                     }
                     else if (toupper(ans) == 'Y')
                     {
@@ -1109,9 +1139,9 @@ void doDay(Player& player, Day& day, Location** locationPTR, Location** prevLoca
                 {
                     
 
-                    *locationPTR = Location::selectLocation(*locationPTR, lensborough, mayfeildCentre, frontSt);
+                    *locationPTR = Location::selectLocation(player, *locationPTR, lensborough, mayfeildCentre, frontSt);
 
-                    (*locationPTR)->locationInfo(day);
+                    (*locationPTR)->locationInfo(player, day);
                 }
 
                 system("CLS");
@@ -1119,21 +1149,21 @@ void doDay(Player& player, Day& day, Location** locationPTR, Location** prevLoca
 
             if (player.energy < 20)
             {
-                Text::printOut("You're too exhausted to fish right now.\n\n");
+                Text::printOut("You're too exhausted to fish right now.\n\n", player.getSanity());
                 system("pause");
                 break;
             }
 
             if (!player.hasFishingRod)
             {
-                Text::printOut("You don't have a fishing rod.\n\n");
+                Text::printOut("You don't have a fishing rod.\n\n", player.getSanity());
                 system("pause");
                 break;
             }
 
             if (fishHook.amount < 1)
             {
-                Text::printOut("You're all out of hooks.\n\n");
+                Text::printOut("You're all out of hooks.\n\n", player.getSanity());
                 system("pause");
                 break;
             }
@@ -1180,13 +1210,13 @@ void doDay(Player& player, Day& day, Location** locationPTR, Location** prevLoca
             {
                 system("CLS");
 
-                Text::printOut("You are very hungry / thirsty, are you sure you shouldn't eat today?\nTo eat, go to 'check supplies' in the previous menu.\n\n");
+                Text::printOut("You are very hungry / thirsty, are you sure you shouldn't eat today?\nTo eat, go to 'check supplies' in the previous menu.\n\n", player.getSanity());
 
-                Text::printOut("Hunger " + to_string(player.hunger) + " % Thirst " + to_string(player.thirst) + " % \n\n");
+                Text::printOut("Hunger " + to_string(player.hunger) + " % Thirst " + to_string(player.thirst) + " % \n\n", player.getSanity());
 
-                Text::printOut("(You lose 30 thirst per rest and lose 10 hunger per rest.)\n\n");
+                Text::printOut("(You lose 30 thirst per rest and lose 10 hunger per rest.)\n\n", player.getSanity());
 
-                Text::printOut("Enter 'S' to sleep, 'E' to check your supplies, or anything else to go back.\n\n");
+                Text::printOut("Enter 'S' to sleep, 'E' to check your supplies, or anything else to go back.\n\n", player.getSanity());
 
                 Text::printOut(">");
                 cin >> sleepConfirm;
@@ -1247,9 +1277,9 @@ void doDay(Player& player, Day& day, Location** locationPTR, Location** prevLoca
 
             break;
         case 6:
-            *locationPTR = Location::selectLocation(*locationPTR, lensborough, mayfeildCentre, frontSt);
+            *locationPTR = Location::selectLocation(player, *locationPTR, lensborough, mayfeildCentre, frontSt);
 
-            (*locationPTR)->locationInfo(day);
+            (*locationPTR)->locationInfo(player, day);
 
             break;
         case 7:
@@ -1260,7 +1290,7 @@ void doDay(Player& player, Day& day, Location** locationPTR, Location** prevLoca
 
             cin.clear();
             cin.ignore(500, '\n');
-            Text::printOut("Invalid entry, enter only digits 1-" + to_string(noChoices) + "\n\n");
+            Text::printOut("Invalid entry, enter only digits 1-" + to_string(noChoices) + "\n\n", player.getSanity());
 
             system("pause");
 
@@ -1333,7 +1363,7 @@ void sleep(Player& player, Day& day, bool dayOff)
 
     if (dayOff)
     {
-        Text::printOut("You take a day off from looting and hunting.\n\t+25 sanity\n\n");
+        Text::printOut("You take a day off from looting and hunting.\n\t+25 sanity\n\n", player.getSanity());
         player.sanity += 25;
         player.sanity = Player::percentRestraint(player.sanity);
 
@@ -1341,7 +1371,7 @@ void sleep(Player& player, Day& day, bool dayOff)
 
         if (player.hasTheDog && !player.hasTheCat || ((player.hasTheDog && player.hasTheCat) && whichOne == 1))
         {
-            Text::printOut("... and you spend some good time with " + player.dogName + ".\n\n" + player.dog + "\n+15 happiness\n");
+            Text::printOut("... and you spend some good time with " + player.dogName + ".\n\n" + player.dog + "\n+15 happiness\n", player.getSanity());
 
             player.happiness += 15;
             player.happiness = Player::percentRestraint(player.happiness);
@@ -1349,7 +1379,7 @@ void sleep(Player& player, Day& day, bool dayOff)
 
         if (!player.hasTheDog && player.hasTheCat || ((player.hasTheDog && player.hasTheCat) && whichOne == 2))
         {
-            Text::printOut("... and you spend some good time with " + player.catName + ".\n\n" + player.cat + "\n+15 happiness\n");
+            Text::printOut("... and you spend some good time with " + player.catName + ".\n\n" + player.cat + "\n+15 happiness\n", player.getSanity());
 
             player.happiness += 15;
             player.happiness = Player::percentRestraint(player.happiness);
@@ -1377,7 +1407,7 @@ void sleep(Player& player, Day& day, bool dayOff)
 
     if (player.sanity > 50 && player.happiness > 50)
     {
-        Text::printOut("You sleep and are well rested.\n\n");
+        Text::printOut("You sleep and are well rested.\n\n", player.getSanity());
 
         player.energy += 80;
         player.energy = Player::percentRestraint(player.energy);
@@ -1385,14 +1415,14 @@ void sleep(Player& player, Day& day, bool dayOff)
     }
     else if (player.sanity < 10 || player.happiness < 10)
     {
-        Text::printOut("You barely get any sleep.\n\n");
+        Text::printOut("You barely get any sleep.\n\n", player.getSanity());
         player.energy += 20;
         player.energy = Player::percentRestraint(player.energy);
 
     }
     else
     {
-        Text::printOut("You toss and turn, but eventually get to sleep.\n\n");
+        Text::printOut("You toss and turn, but eventually get to sleep.\n\n", player.getSanity());
 
         player.energy += 60;
         player.energy = Player::percentRestraint(player.energy);
@@ -1417,6 +1447,8 @@ void printChangeLog()
     Text::printOut("Update 10 / 24 / 2021 \n\t-Random Events are now dependant on the location in which they take place \n\t-Acquiring the hunting rifle and fishing rod is also dependant on location and considered to be 'random events'\n\n");
 
     Text::printOut("Update 10 / 28 / 2021 \n\t-Added option to continue from where you left off yesterday instead of having to pick location over and over. \n\n");
+
+    Text::printOut("Update 11/29/2021 \n\t-Made it so that text jumbles as player gets low sanity\n\t-Added a message for when player is losing their mind\n\t-Begun git repository");
 
     system("pause");
 }

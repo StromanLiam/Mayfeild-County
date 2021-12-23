@@ -110,6 +110,8 @@ public:
         return value;
     }
 
+    int getSanity() { return this->sanity; }
+
 
 
 };

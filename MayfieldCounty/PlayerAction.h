@@ -75,23 +75,23 @@ public:
 					break;
 				}
 
-				Text::printOut("You catch a bass.\n");
+				Text::printOut("You catch a bass.\n", player.getSanity());
 
 				if (rand() % 4 == 0)
 				{
-					Text::printOut("\nWhat a catch!\n");
+					Text::printOut("\nWhat a catch!\n", player.getSanity());
 					amountAquired *= 2;
-					Text::printOut("\t+20 Happiness\n\n");
+					Text::printOut("\t+20 Happiness\n\n", player.getSanity());
 					player.happiness += 20;
 				}
 
 				amountAquired = (rand() % 3) + 1;
 
-				Text::printOut("Found (" + to_string(amountAquired) + ") bass.\n");
+				Text::printOut("Found (" + to_string(amountAquired) + ") bass.\n", player.getSanity());
 
 				bass.amount += amountAquired;
 
-				Text::printOut("\tYou have (" + to_string(bass.amount) + ") total.\n");
+				Text::printOut("\tYou have (" + to_string(bass.amount) + ") total.\n", player.getSanity());
 
 				roll = false;
 				break;
@@ -106,15 +106,15 @@ public:
 					break;
 				}
 
-				Text::printOut("You catch some sunfish.\n");
+				Text::printOut("You catch some sunfish.\n", player.getSanity());
 
 				amountAquired = (rand() % 5) + 1;
 
-				Text::printOut("Found (" + to_string(amountAquired) + ") sunfish.\n");
+				Text::printOut("Found (" + to_string(amountAquired) + ") sunfish.\n", player.getSanity());
 
 				sunfish.amount += amountAquired;
 
-				Text::printOut("\tYou have (" + to_string(sunfish.amount) + ") total.\n");
+				Text::printOut("\tYou have (" + to_string(sunfish.amount) + ") total.\n", player.getSanity());
 
 				roll = false;
 				break;
@@ -129,15 +129,15 @@ public:
 					break;
 				}
 
-				Text::printOut("You catch nothing... but you find some mussels.\n");
+				Text::printOut("You catch nothing... but you find some mussels.\n", player.getSanity());
 
 				amountAquired = (rand() % 8) + 1;
 
-				Text::printOut("Found (" + to_string(amountAquired) + ") mussels.\n");
+				Text::printOut("Found (" + to_string(amountAquired) + ") mussels.\n", player.getSanity());
 
 				mussel.amount += amountAquired;
 
-				Text::printOut("\tYou have (" + to_string(mussel.amount) + ") total.\n");
+				Text::printOut("\tYou have (" + to_string(mussel.amount) + ") total.\n", player.getSanity());
 
 				roll = false;
 				break;
@@ -151,23 +151,23 @@ public:
 					break;
 				}
 
-				Text::printOut("You catch a salmon!\n");
+				Text::printOut("You catch a salmon!\n", player.getSanity());
 
 				amountAquired = (rand() % 5) + 5;
 
 				if (rand() % 4 == 0)
 				{
-					Text::printOut("\nWhat a catch!\n");
+					Text::printOut("\nWhat a catch!\n", player.getSanity());
 					amountAquired *= 2;
-					Text::printOut("\t+20 Happiness\n\n");
+					Text::printOut("\t+20 Happiness\n\n", player.getSanity());
 					player.happiness += 20;
 				}
 
-				Text::printOut("Found (" + to_string(amountAquired) + ") pounds.\n");
+				Text::printOut("Found (" + to_string(amountAquired) + ") pounds.\n", player.getSanity());
 
 				salmon.amount += amountAquired;
 
-				Text::printOut("\tYou have (" + to_string(salmon.amount) + ") pounds total.\n");
+				Text::printOut("\tYou have (" + to_string(salmon.amount) + ") pounds total.\n", player.getSanity());
 
 				roll = false;
 				break;
@@ -184,7 +184,7 @@ public:
 					break;
 				}
 
-				Text::printOut("You catch nothing.\n");
+				Text::printOut("You catch nothing.\n", player.getSanity());
 
 				roll = false;
 				break;
@@ -241,15 +241,15 @@ public:
 					break;
 				}
 
-				Text::printOut("You shoot a deer.\n");
+				Text::printOut("You shoot a deer.\n", player.getSanity());
 
 				amountAquired = (rand() % 1) + 1;
 
-				Text::printOut("Found (" + to_string(amountAquired) + ") venison steak.\n");
+				Text::printOut("Found (" + to_string(amountAquired) + ") venison steak.\n", player.getSanity());
 
 				venison.amount += amountAquired;
 
-				Text::printOut("\tYou have (" + to_string(venison.amount) + ") total.\n");
+				Text::printOut("\tYou have (" + to_string(venison.amount) + ") total.\n"), player.getSanity();
 
 				bullet.amount -= amountAquired;
 
@@ -266,15 +266,15 @@ public:
 					break;
 				}
 
-				Text::printOut("You shoot a rabbit.\n");
+				Text::printOut("You shoot a rabbit.\n", player.getSanity());
 
 				amountAquired = (rand() % 3) + 1;
 
-				Text::printOut("Found (" + to_string(amountAquired) + ") rabbit meat.\n");
+				Text::printOut("Found (" + to_string(amountAquired) + ") rabbit meat.\n", player.getSanity());
 
 				rabbit.amount += amountAquired;
 
-				Text::printOut("\tYou have (" + to_string(rabbit.amount) + ") total.\n");
+				Text::printOut("\tYou have (" + to_string(rabbit.amount) + ") total.\n", player.getSanity());
 
 				bullet.amount -= amountAquired;
 
@@ -296,15 +296,15 @@ public:
 					break;
 				}
 
-				Text::printOut("You shoot a squirrel.\n");
+				Text::printOut("You shoot a squirrel.\n", player.getSanity());
 
 				amountAquired = (rand() % 3) + 1;
 
-				Text::printOut("Found (" + to_string(amountAquired) + ") squirrel meat.\n");
+				Text::printOut("Found (" + to_string(amountAquired) + ") squirrel meat.\n", player.getSanity());
 
 				squirrel.amount += amountAquired;
 
-				Text::printOut("\tYou have (" + to_string(squirrel.amount) + ") total.\n");
+				Text::printOut("\tYou have (" + to_string(squirrel.amount) + ") total.\n", player.getSanity());
 
 				bullet.amount -= amountAquired;
 
@@ -326,10 +326,10 @@ public:
 				{
 					break;
 				}
-				Text::printOut("You find a feral dog.\n");
-				Text::printOut("... You could shoot and eat it, but is that something you want to do?\n");
+				Text::printOut("You find a feral dog.\n", player.getSanity());
+				Text::printOut("... You could shoot and eat it, but is that something you want to do?\n", player.getSanity());
 
-				Text::printOut("\nEnter (Y/N): ");
+				Text::printOut("\nEnter (Y/N): ", player.getSanity());
 				Text::printOut("\n\n>");
 				cin >> keepAns;
 				cin.ignore(1000, '\n');
@@ -338,7 +338,7 @@ public:
 
 				while (cin.fail() || (toupper(keepAns) != 'Y' && toupper(keepAns) != 'N'))
 				{
-					Text::printOut("\nInvalid entry, enter only Y or N.\n");
+					Text::printOut("\nInvalid entry, enter only Y or N.\n", player.getSanity());
 					Text::printOut(">");
 					cin >> keepAns;
 					cin.ignore(1000, '\n');
@@ -348,18 +348,18 @@ public:
 				{
 					amountAquired = (rand() % 3) + 1;
 
-					Text::printOut("Found (" + to_string(amountAquired) + ") dog meat.\n");
+					Text::printOut("Found (" + to_string(amountAquired) + ") dog meat.\n", player.getSanity());
 
 					dogMeat.amount += amountAquired;
 
-					Text::printOut("\tYou have (" + to_string(dogMeat.amount) + ") total.\n");
+					Text::printOut("\tYou have (" + to_string(dogMeat.amount) + ") total.\n", player.getSanity());
 
 					bullet.amount -= amountAquired;
 
 				}
 				else
 				{
-					Text::printOut("\nYou leave it behind.\n");
+					Text::printOut("\nYou leave it behind.\n", player.getSanity());
 				}
 
 				roll = false;
@@ -389,15 +389,15 @@ public:
 					break;
 				}
 
-				Text::printOut("You shoot a feral sheep.\n");
+				Text::printOut("You shoot a feral sheep.\n", player.getSanity());
 
 				amountAquired = (rand() % 3) + 1;
 
-				Text::printOut("Found (" + to_string(amountAquired) + ") mutton.\n");
+				Text::printOut("Found (" + to_string(amountAquired) + ") mutton.\n", player.getSanity());
 
 				mutton.amount += amountAquired;
 
-				Text::printOut("\tYou have (" + to_string(mutton.amount) + ") total.\n");
+				Text::printOut("\tYou have (" + to_string(mutton.amount) + ") total.\n", player.getSanity());
 
 				bullet.amount -= amountAquired;
 
@@ -418,10 +418,10 @@ public:
 					break;
 				}
 
-				Text::printOut("You find a feral cat.\n");
-				Text::printOut("... You could shoot and eat it, but is that something you want to do?\n");
+				Text::printOut("You find a feral cat.\n", player.getSanity());
+				Text::printOut("... You could shoot and eat it, but is that something you want to do?\n", player.getSanity());
 
-				Text::printOut("\nEnter (Y/N): ");
+				Text::printOut("\nEnter (Y/N): ", player.getSanity());
 
 				Text::printOut("\n\n>");
 				cin >> keepAns;
@@ -431,7 +431,7 @@ public:
 
 				while (cin.fail() || (toupper(keepAns) != 'Y' && toupper(keepAns) != 'N'))
 				{
-					Text::printOut("\nInvalid entry, enter only Y or N.\n");
+					Text::printOut("\nInvalid entry, enter only Y or N.\n", player.getSanity());
 					Text::printOut(">");
 					cin >> keepAns;
 					cin.ignore(1000, '\n');
@@ -441,18 +441,18 @@ public:
 				{
 					amountAquired = (rand() % 2) + 1;
 
-					Text::printOut("Found (" + to_string(amountAquired) + ") cat meat.\n");
+					Text::printOut("Found (" + to_string(amountAquired) + ") cat meat.\n", player.getSanity());
 
 					catMeat.amount += amountAquired;
 
-					Text::printOut("\tYou have (" + to_string(catMeat.amount) + ") total.\n");
+					Text::printOut("\tYou have (" + to_string(catMeat.amount) + ") total.\n", player.getSanity());
 
 					bullet.amount -= amountAquired;
 
 				}
 				else
 				{
-					Text::printOut("\nYou leave it behind.\n");
+					Text::printOut("\nYou leave it behind.\n", player.getSanity());
 				}
 
 				roll = false;
@@ -478,15 +478,15 @@ public:
 					break;
 				}
 
-				Text::printOut("You shoot a goose.\n");
+				Text::printOut("You shoot a goose.\n", player.getSanity());
 
 				amountAquired = (rand() % 2) + 1;
 
-				Text::printOut("Found (" + to_string(amountAquired) + ") goose.\n");
+				Text::printOut("Found (" + to_string(amountAquired) + ") goose.\n", player.getSanity());
 
 				goose.amount += amountAquired;
 
-				Text::printOut("\tYou have (" + to_string(goose.amount) + ") total.\n");
+				Text::printOut("\tYou have (" + to_string(goose.amount) + ") total.\n", player.getSanity());
 
 				bullet.amount -= amountAquired;
 
@@ -513,15 +513,15 @@ public:
 					break;
 				}
 
-				Text::printOut("You shoot a turkey.\n");
+				Text::printOut("You shoot a turkey.\n", player.getSanity());
 
 				amountAquired = (rand() % 3) + 1;
 
-				Text::printOut("Found (" + to_string(amountAquired) + ") turkey.\n");
+				Text::printOut("Found (" + to_string(amountAquired) + ") turkey.\n", player.getSanity());
 
 				turkey.amount += amountAquired;
 
-				Text::printOut("\tYou have (" + to_string(turkey.amount) + ") total.\n");
+				Text::printOut("\tYou have (" + to_string(turkey.amount) + ") total.\n", player.getSanity());
 
 				bullet.amount -= amountAquired;
 
@@ -543,15 +543,15 @@ public:
 					break;
 				}
 
-				Text::printOut("You shoot a duck.\n");
+				Text::printOut("You shoot a duck.\n", player.getSanity());
 
 				amountAquired = (rand() % 3) + 1;
 
-				Text::printOut("Found (" + to_string(amountAquired) + ") duck.\n");
+				Text::printOut("Found (" + to_string(amountAquired) + ") duck.\n", player.getSanity());
 
 				duck.amount += amountAquired;
 
-				Text::printOut("\tYou have (" + to_string(duck.amount) + ") total.\n");
+				Text::printOut("\tYou have (" + to_string(duck.amount) + ") total.\n", player.getSanity());
 
 				bullet.amount -= amountAquired;
 
@@ -580,15 +580,15 @@ public:
 					break;
 				}
 
-				Text::printOut("You shoot a seagull.\n");
+				Text::printOut("You shoot a seagull.\n", player.getSanity());
 
 				amountAquired = (rand() % 5) + 1;
 
-				Text::printOut("Found (" + to_string(amountAquired) + ") seagull meat.\n");
+				Text::printOut("Found (" + to_string(amountAquired) + ") seagull meat.\n", player.getSanity());
 
 				seagullMeat.amount += amountAquired;
 
-				Text::printOut("\tYou have (" + to_string(seagullMeat.amount) + ") total.\n");
+				Text::printOut("\tYou have (" + to_string(seagullMeat.amount) + ") total.\n", player.getSanity());
 
 				bullet.amount -= amountAquired;
 
@@ -618,15 +618,15 @@ public:
 
 
 
-				Text::printOut("You shoot a feral cow.\n");
+				Text::printOut("You shoot a feral cow.\n", player.getSanity());
 
 				amountAquired = (rand() % 2) + 1;
 
-				Text::printOut("Found (" + to_string(amountAquired) + ") beef.\n");
+				Text::printOut("Found (" + to_string(amountAquired) + ") beef.\n", player.getSanity());
 
 				beef.amount += amountAquired;
 
-				Text::printOut("\tYou have (" + to_string(beef.amount) + ") total.\n");
+				Text::printOut("\tYou have (" + to_string(beef.amount) + ") total.\n", player.getSanity());
 
 				bullet.amount -= amountAquired;
 
@@ -654,15 +654,15 @@ public:
 				}
 
 
-				Text::printOut("You shoot a feral horse.\n");
+				Text::printOut("You shoot a feral horse.\n", player.getSanity());
 
 				amountAquired = (rand() % 2) + 1;
 
-				Text::printOut("Found (" + to_string(amountAquired) + ") horse meat.\n");
+				Text::printOut("Found (" + to_string(amountAquired) + ") horse meat.\n", player.getSanity());
 
 				horseMeat.amount += amountAquired;
 
-				Text::printOut("\tYou have (" + to_string(horseMeat.amount) + ") total.\n");
+				Text::printOut("\tYou have (" + to_string(horseMeat.amount) + ") total.\n", player.getSanity());
 
 				bullet.amount -= amountAquired;
 
@@ -689,7 +689,7 @@ public:
 					break;
 				}
 
-				Text::printOut("You catch nothing.\n");
+				Text::printOut("You catch nothing.\n", player.getSanity());
 
 				roll = false;
 				break;
@@ -714,16 +714,16 @@ public:
 
 						amountAquired = (rand() % 3) + 1;
 
-						Text::printOut("\n.. and " + player.dogName + " caught a rabbit!\n\n");
+						Text::printOut("\n.. and " + player.dogName + " caught a rabbit!\n\n", player.getSanity());
 
 
 						Text::printOut(player.dog + "\n\n");
 
-						Text::printOut("Found (" + to_string(amountAquired) + ") rabbit meat.\n");
+						Text::printOut("Found (" + to_string(amountAquired) + ") rabbit meat.\n", player.getSanity());
 
 						rabbit.amount += amountAquired;
 
-						Text::printOut("\tYou have (" + to_string(rabbit.amount) + ") total.\n");
+						Text::printOut("\tYou have (" + to_string(rabbit.amount) + ") total.\n", player.getSanity());
 
 						PlaySound(TEXT("itemize.wav"), NULL, SND_ASYNC);
 
@@ -747,15 +747,15 @@ public:
 
 						amountAquired = (rand() % 3) + 1;
 
-						Text::printOut("\n.. and " + player.dogName + " caught a squirrel!\n\n");
+						Text::printOut("\n.. and " + player.dogName + " caught a squirrel!\n\n", player.getSanity());
 
 						Text::printOut(player.dog + "\n\n");
 
-						Text::printOut("Found (" + to_string(amountAquired) + ") squirrel meat.\n");
+						Text::printOut("Found (" + to_string(amountAquired) + ") squirrel meat.\n", player.getSanity());
 
 						squirrel.amount += amountAquired;
 
-						Text::printOut("\tYou have (" + to_string(squirrel.amount) + ") total.\n");
+						Text::printOut("\tYou have (" + to_string(squirrel.amount) + ") total.\n", player.getSanity());
 
 						PlaySound(TEXT("itemize.wav"), NULL, SND_ASYNC);
 
@@ -779,15 +779,15 @@ public:
 
 						amountAquired = (rand() % 3) + 1;
 
-						Text::printOut("\n.. and " + player.dogName + " caught a duck!\n\n");
+						Text::printOut("\n.. and " + player.dogName + " caught a duck!\n\n", player.getSanity());
 
 						Text::printOut(player.dog + "\n\n");
 
-						Text::printOut("Found (" + to_string(amountAquired) + ") duck.\n");
+						Text::printOut("Found (" + to_string(amountAquired) + ") duck.\n", player.getSanity());
 
 						duck.amount += amountAquired;
 
-						Text::printOut("\tYou have (" + to_string(duck.amount) + ") total.\n");
+						Text::printOut("\tYou have (" + to_string(duck.amount) + ") total.\n", player.getSanity());
 
 						PlaySound(TEXT("itemize.wav"), NULL, SND_ASYNC);
 
@@ -813,15 +813,15 @@ public:
 
 						amountAquired = (rand() % 3) + 1;
 
-						Text::printOut("\n.. and " + player.dogName + " caught a seagull!\n\n");
+						Text::printOut("\n.. and " + player.dogName + " caught a seagull!\n\n", player.getSanity());
 
 						Text::printOut(player.dog + "\n\n");
 
-						Text::printOut("Found (" + to_string(amountAquired) + ") seagull.\n");
+						Text::printOut("Found (" + to_string(amountAquired) + ") seagull.\n", player.getSanity());
 
 						seagullMeat.amount += amountAquired;
 
-						Text::printOut("\tYou have (" + to_string(seagullMeat.amount) + ") total.\n");
+						Text::printOut("\tYou have (" + to_string(seagullMeat.amount) + ") total.\n", player.getSanity());
 
 						PlaySound(TEXT("itemize.wav"), NULL, SND_ASYNC);
 
@@ -876,7 +876,7 @@ public:
 				amountAquired = (rand() % 5) + 1;
 
 
-				Text::printOut("Found (" + to_string(amountAquired) + ") Canned Tomatos.\n");
+				Text::printOut("Found (" + to_string(amountAquired) + ") Canned Tomatos.\n", player.getSanity());
 
 
 				randRisk = (rand() % 100) + 1;
@@ -888,13 +888,13 @@ public:
 					switch (rand() % 3)
 					{
 					case 0:
-						Text::printOut("\n\nThese cans are rusted a bit, do you think they're still fine to eat?");
+						Text::printOut("\n\nThese cans are rusted a bit, do you think they're still fine to eat?", player.getSanity());
 						break;
 					case 1:
-						Text::printOut("\n\nOne of these cans seems a bit off, will you still keep it?");
+						Text::printOut("\n\nOne of these cans seems a bit off, will you still keep it?", player.getSanity());
 						break;
 					case 2:
-						Text::printOut("\n\nThese cans don't smell very fresh anymore, will you still keep them?");
+						Text::printOut("\n\nThese cans don't smell very fresh anymore, will you still keep them?", player.getSanity());
 						break;
 					}
 
@@ -908,7 +908,7 @@ public:
 
 					while (cin.fail() || (toupper(keepAns) != 'Y' && toupper(keepAns) != 'N'))
 					{
-						Text::printOut("\nInvalid entry, enter only Y or N.\n");
+						Text::printOut("\nInvalid entry, enter only Y or N.\n", player.getSanity());
 						Text::printOut(">");
 						cin >> keepAns;
 						cin.ignore(1000, '\n');
@@ -923,7 +923,7 @@ public:
 					}
 					else
 					{
-						Text::printOut("\nYou throw them away, seems like a waste, but better to be safe right?");
+						Text::printOut("\nYou throw them away, seems like a waste, but better to be safe right?", player.getSanity());
 					}
 
 
@@ -937,7 +937,7 @@ public:
 				{
 					cannedVegitables.amount += amountAquired;
 
-					Text::printOut("\tYou have (" + to_string(cannedVegitables.amount) + ") total.");
+					Text::printOut("\tYou have (" + to_string(cannedVegitables.amount) + ") total.", player.getSanity());
 				}
 
 				roll = false;
@@ -955,11 +955,11 @@ public:
 
 				amountAquired = (rand() % 2) + 1;
 
-				Text::printOut("Found (" + to_string(amountAquired) + ") Jugs of water.\n");
+				Text::printOut("Found (" + to_string(amountAquired) + ") Jugs of water.\n", player.getSanity());
 
 				waterJug.amount += amountAquired;
 
-				Text::printOut("\tYou have (" + to_string(waterJug.amount) + ") total.");
+				Text::printOut("\tYou have (" + to_string(waterJug.amount) + ") total.", player.getSanity());
 
 				roll = false;
 				break;
@@ -980,7 +980,7 @@ public:
 				}
 				else
 				{
-					Text::printOut("You found a fishing rod!\n");
+					Text::printOut("You found a fishing rod!\n", player.getSanity());
 					player.hasFishingRod = true;
 				}
 				roll = false;
@@ -999,11 +999,11 @@ public:
 
 				amountAquired = (rand() % 3) + 1;
 
-				Text::printOut("Found (" + to_string(amountAquired) + ") fish hooks.\n");
+				Text::printOut("Found (" + to_string(amountAquired) + ") fish hooks.\n", player.getSanity());
 
 				fishHook.amount += amountAquired;
 
-				Text::printOut("\tYou have (" + to_string(fishHook.amount) + ") total.\n");
+				Text::printOut("\tYou have (" + to_string(fishHook.amount) + ") total.\n", player.getSanity());
 				roll = false;
 				break;
 
@@ -1024,7 +1024,7 @@ public:
 				}
 				else
 				{
-					Text::printOut("You found a hunting rifle!\n");
+					Text::printOut("You found a hunting rifle!\n", player.getSanity());
 					player.hasHuntingRifle = true;
 				}
 				roll = false;
@@ -1042,11 +1042,11 @@ public:
 
 				amountAquired = (rand() % 10) + 1;
 
-				Text::printOut("Found (" + to_string(amountAquired) + ") bullets.\n");
+				Text::printOut("Found (" + to_string(amountAquired) + ") bullets.\n", player.getSanity());
 
 				bullet.amount += amountAquired;
 
-				Text::printOut("\tYou have (" + to_string(bullet.amount) + ") total.\n");
+				Text::printOut("\tYou have (" + to_string(bullet.amount) + ") total.\n", player.getSanity());
 				roll = false;
 				break;
 
@@ -1063,11 +1063,11 @@ public:
 
 				amountAquired = 1;
 
-				Text::printOut("Found (" + to_string(amountAquired) + ") first aid kit.\n");
+				Text::printOut("Found (" + to_string(amountAquired) + ") first aid kit.\n", player.getSanity());
 
 				firstAidKit.amount += amountAquired;
 
-				Text::printOut("\tYou have (" + to_string(firstAidKit.amount) + ") total.\n");
+				Text::printOut("\tYou have (" + to_string(firstAidKit.amount) + ") total.\n", player.getSanity());
 				roll = false;
 				break;
 			case 8:
@@ -1082,11 +1082,11 @@ public:
 
 				amountAquired = (rand() % 2) + 1;
 
-				Text::printOut("Found (" + to_string(amountAquired) + ") antibiotics.\n");
+				Text::printOut("Found (" + to_string(amountAquired) + ") antibiotics.\n", player.getSanity());
 
 				antibiotics.amount += amountAquired;
 
-				Text::printOut("\tYou have (" + to_string(antibiotics.amount) + ") total.\n");
+				Text::printOut("\tYou have (" + to_string(antibiotics.amount) + ") total.\n", player.getSanity());
 				roll = false;
 				break;
 			case 9:
@@ -1101,11 +1101,11 @@ public:
 
 				amountAquired = (rand() % 2) + 1;
 
-				Text::printOut("Found (" + to_string(amountAquired) + ") charcoal.\n");
+				Text::printOut("Found (" + to_string(amountAquired) + ") charcoal.\n", player.getSanity());
 
 				charcoal.amount += amountAquired;
 
-				Text::printOut("\tYou have (" + to_string(charcoal.amount) + ") total.\n");
+				Text::printOut("\tYou have (" + to_string(charcoal.amount) + ") total.\n", player.getSanity());
 				roll = false;
 				break;
 			case 10:
@@ -1121,7 +1121,7 @@ public:
 
 				amountAquired = (rand() % 5) + 1;
 
-				Text::printOut("Found (" + to_string(amountAquired) + ") canned pinapples.\n");
+				Text::printOut("Found (" + to_string(amountAquired) + ") canned pinapples.\n", player.getSanity());
 
 				randRisk = (rand() % 100) + 1;
 
@@ -1132,17 +1132,17 @@ public:
 					switch (rand() % 3)
 					{
 					case 0:
-						Text::printOut("\n\nThese cans are rusted a bit, do you think they're still fine to eat?");
+						Text::printOut("\n\nThese cans are rusted a bit, do you think they're still fine to eat?", player.getSanity());
 						break;
 					case 1:
-						Text::printOut("\n\nOne of these cans seems a bit off, will you still keep it?");
+						Text::printOut("\n\nOne of these cans seems a bit off, will you still keep it?", player.getSanity());
 						break;
 					case 2:
-						Text::printOut("\n\nThese cans don't smell very fresh anymore, will you still keep them?");
+						Text::printOut("\n\nThese cans don't smell very fresh anymore, will you still keep them?", player.getSanity());
 						break;
 					}
 
-					Text::printOut("\nEnter (Y/N): ");
+					Text::printOut("\nEnter (Y/N): ", player.getSanity());
 
 					Text::printOut("\n\n>");
 					cin >> keepAns;
@@ -1152,7 +1152,7 @@ public:
 
 					while (cin.fail() || (toupper(keepAns) != 'Y' && toupper(keepAns) != 'N'))
 					{
-						Text::printOut("\nInvalid entry, enter only Y or N.\n");
+						Text::printOut("\nInvalid entry, enter only Y or N.\n", player.getSanity());
 						Text::printOut(">");
 						cin >> keepAns;
 						cin.ignore(1000, '\n');
@@ -1167,7 +1167,7 @@ public:
 					}
 					else
 					{
-						Text::printOut("\nYou throw them away, seems like a waste, but better to be safe right?");
+						Text::printOut("\nYou throw them away, seems like a waste, but better to be safe right?", player.getSanity());
 					}
 
 
@@ -1182,7 +1182,7 @@ public:
 					cannedPinapples.amount += amountAquired;
 
 
-					Text::printOut("\tYou have (" + to_string(cannedPinapples.amount) + ") total.\n");
+					Text::printOut("\tYou have (" + to_string(cannedPinapples.amount) + ") total.\n", player.getSanity());
 				}
 				roll = false;
 				break;
@@ -1201,7 +1201,7 @@ public:
 				amountAquired = (rand() % 5) + 1;
 
 
-				Text::printOut("Found (" + to_string(amountAquired) + ") canned corn.\n");
+				Text::printOut("Found (" + to_string(amountAquired) + ") canned corn.\n", player.getSanity());
 
 
 
@@ -1214,17 +1214,17 @@ public:
 					switch (rand() % 3)
 					{
 					case 0:
-						Text::printOut("\n\nThese cans are rusted a bit, do you think they're still fine to eat?");
+						Text::printOut("\n\nThese cans are rusted a bit, do you think they're still fine to eat?", player.getSanity());
 						break;
 					case 1:
-						Text::printOut("\n\nOne of these cans seems a bit off, will you still keep it?");
+						Text::printOut("\n\nOne of these cans seems a bit off, will you still keep it?", player.getSanity());
 						break;
 					case 2:
-						Text::printOut("\n\nThese cans don't smell very fresh anymore, will you still keep them?");
+						Text::printOut("\n\nThese cans don't smell very fresh anymore, will you still keep them?", player.getSanity());
 						break;
 					}
 
-					Text::printOut("\nEnter (Y/N): ");
+					Text::printOut("\nEnter (Y/N): ", player.getSanity());
 					Text::printOut("\n\n>");
 
 					cin >> keepAns;
@@ -1234,7 +1234,7 @@ public:
 
 					while (cin.fail() || (toupper(keepAns) != 'Y' && toupper(keepAns) != 'N'))
 					{
-						Text::printOut("\nInvalid entry, enter only Y or N.\n");
+						Text::printOut("\nInvalid entry, enter only Y or N.\n", player.getSanity());
 						Text::printOut(">");
 						cin >> keepAns;
 						cin.ignore(1000, '\n');
@@ -1249,7 +1249,7 @@ public:
 					}
 					else
 					{
-						Text::printOut("\nYou throw them away, seems like a waste, but better to be safe right?");
+						Text::printOut("\nYou throw them away, seems like a waste, but better to be safe right?", player.getSanity());
 					}
 
 
@@ -1263,7 +1263,7 @@ public:
 				{
 					cannedCorn.amount += amountAquired;
 
-					Text::printOut("\tYou have (" + to_string(cannedCorn.amount) + ") total.\n");
+					Text::printOut("\tYou have (" + to_string(cannedCorn.amount) + ") total.\n", player.getSanity());
 				}
 				roll = false;
 				break;
@@ -1280,11 +1280,11 @@ public:
 
 				amountAquired = 1;
 
-				Text::printOut("Found (" + to_string(amountAquired) + ") antitoxin.\n");
+				Text::printOut("Found (" + to_string(amountAquired) + ") antitoxin.\n", player.getSanity());
 
 				antitoxin.amount += amountAquired;
 
-				Text::printOut("\tYou have (" + to_string(antitoxin.amount) + ") total.\n");
+				Text::printOut("\tYou have (" + to_string(antitoxin.amount) + ") total.\n", player.getSanity());
 
 				roll = false;
 				break;
@@ -1306,11 +1306,11 @@ public:
 				}
 				amountAquired = 1;
 
-				Text::printOut("Found (" + to_string(amountAquired) + ") rabies shot.\n");
+				Text::printOut("Found (" + to_string(amountAquired) + ") rabies shot.\n", player.getSanity());
 
 				rabiesShot.amount += amountAquired;
 
-				Text::printOut("\tYou have (" + to_string(rabiesShot.amount) + ") total.\n");
+				Text::printOut("\tYou have (" + to_string(rabiesShot.amount) + ") total.\n", player.getSanity());
 
 				roll = false;
 				break;
@@ -1328,11 +1328,11 @@ public:
 
 				amountAquired = (rand() % 2) + 1;
 
-				Text::printOut("Found (" + to_string(amountAquired) + ") instant coffee.\n");
+				Text::printOut("Found (" + to_string(amountAquired) + ") instant coffee.\n", player.getSanity());
 
 				instantCoffee.amount += amountAquired;
 
-				Text::printOut("\tYou have (" + to_string(instantCoffee.amount) + ") total.\n");
+				Text::printOut("\tYou have (" + to_string(instantCoffee.amount) + ") total.\n", player.getSanity());
 
 				roll = false;
 				break;
@@ -1349,11 +1349,11 @@ public:
 
 				amountAquired = (rand() % 4) + 1;
 
-				Text::printOut("Found (" + to_string(amountAquired) + ") canned beer.\n");
+				Text::printOut("Found (" + to_string(amountAquired) + ") canned beer.\n", player.getSanity());
 
 				cannedBeer.amount += amountAquired;
 
-				Text::printOut("\tYou have (" + to_string(cannedBeer.amount) + ") total.\n");
+				Text::printOut("\tYou have (" + to_string(cannedBeer.amount) + ") total.\n", player.getSanity());
 				roll = false;
 				break;
 			case 16:
@@ -1368,16 +1368,16 @@ public:
 
 				amountAquired = (rand() % 2) + 1;
 
-				Text::printOut("Found (" + to_string(amountAquired) + ") tea.\n");
+				Text::printOut("Found (" + to_string(amountAquired) + ") tea.\n", player.getSanity());
 
 				tea.amount += amountAquired;
 
-				Text::printOut("\tYou have (" + to_string(tea.amount) + ") total.\n");
+				Text::printOut("\tYou have (" + to_string(tea.amount) + ") total.\n", player.getSanity());
 
 				roll = false;
 				break;
 			default:
-				Text::printOut("You are unable to find anything.");
+				Text::printOut("You are unable to find anything.", player.getSanity());
 				roll = false;
 				break;
 			}
@@ -1424,10 +1424,10 @@ public:
 					break;
 				}
 
-				Text::printOut("While you are walking you stumble across some (edible) mushrooms.\n");
+				Text::printOut("While you are walking you stumble across some (edible) mushrooms.\n", player.getSanity());
 				amountAquired = (rand() % 6) + 1;
 
-				Text::printOut("Found (" + to_string(amountAquired) + ") Shaggy Mane.\n");
+				Text::printOut("Found (" + to_string(amountAquired) + ") Shaggy Mane.\n", player.getSanity());
 
 				randRisk = (rand() % 100) + 1;
 
@@ -1436,10 +1436,10 @@ public:
 					switch (rand() % 2)
 					{
 					case 0:
-						Text::printOut("\n... They might actually be something else similar, it's hard to say. Should you keep them?");
+						Text::printOut("\n... They might actually be something else similar, it's hard to say. Should you keep them?", player.getSanity());
 						break;
 					case 1:
-						Text::printOut("\n\n... You're only mostly sure they're shaggy mane though.\nProbably safe to keep right?");
+						Text::printOut("\n\n... You're only mostly sure they're shaggy mane though.\nProbably safe to keep right?", player.getSanity());
 						break;
 					}
 
@@ -1453,7 +1453,7 @@ public:
 
 					while (cin.fail() || (toupper(keepAns) != 'Y' && toupper(keepAns) != 'N'))
 					{
-						Text::printOut("\nInvalid entry, enter only Y or N.\n");
+						Text::printOut("\nInvalid entry, enter only Y or N.\n", player.getSanity());
 						Text::printOut(">");
 						cin >> keepAns;
 						cin.ignore(1000, '\n');
@@ -1468,7 +1468,7 @@ public:
 					}
 					else
 					{
-						Text::printOut("\nYou throw them away, seems like a waste, but better to be safe right?");
+						Text::printOut("\nYou throw them away, seems like a waste, but better to be safe right?", player.getSanity());
 					}
 
 
@@ -1506,17 +1506,17 @@ public:
 					break;
 				}
 
-				Text::printOut("While you are walking you find some frogs.\n");
+				Text::printOut("While you are walking you find some frogs.\n", player.getSanity());
 
 				amountAquired = (rand() % 3) + 1;
 
-				Text::printOut("Found (" + to_string(amountAquired) + ") Frog Legs.\n");
+				Text::printOut("Found (" + to_string(amountAquired) + ") Frog Legs.\n", player.getSanity());
 
 
 				frogLegs.amount += amountAquired;
 
 				PlaySound(TEXT("itemize.wav"), NULL, SND_ASYNC);
-				Text::printOut("\tYou have (" + to_string(frogLegs.amount) + ") total.");
+				Text::printOut("\tYou have (" + to_string(frogLegs.amount) + ") total.", player.getSanity());
 
 				roll = false;
 				break;
@@ -1535,8 +1535,8 @@ public:
 				{
 					break;
 				}
-				Text::printOut("While you are walking you find a bird's nest.\n");
-				Text::printOut(" ... you could take the eggs for food, but do you really want to do that?\n");
+				Text::printOut("While you are walking you find a bird's nest.\n", player.getSanity());
+				Text::printOut(" ... you could take the eggs for food, but do you really want to do that?\n", player.getSanity());
 
 				Text::printOut("\nEnter (Y/N): ");
 
@@ -1549,7 +1549,7 @@ public:
 
 				while (cin.fail() || (toupper(keepAns) != 'Y' && toupper(keepAns) != 'N'))
 				{
-					Text::printOut("\nInvalid entry, enter only Y or N.\n");
+					Text::printOut("\nInvalid entry, enter only Y or N.\n", player.getSanity());
 					Text::printOut(">");
 					cin >> keepAns;
 					cin.ignore(1000, '\n');
@@ -1559,18 +1559,18 @@ public:
 				{
 					amountAquired = (rand() % 6) + 1;
 
-					Text::printOut("Found (" + to_string(amountAquired) + ") Eggs.\n");
+					Text::printOut("Found (" + to_string(amountAquired) + ") Eggs.\n", player.getSanity());
 
 					birdEgg.amount += amountAquired;
 
 					PlaySound(TEXT("itemize.wav"), NULL, SND_ASYNC);
 
-					Text::printOut("\tYou have (" + to_string(birdEgg.amount) + ") total.");
+					Text::printOut("\tYou have (" + to_string(birdEgg.amount) + ") total.", player.getSanity());
 
 				}
 				else
 				{
-					Text::printOut("\nYou leave them behind.\n");
+					Text::printOut("\nYou leave them behind.\n", player.getSanity());
 				}
 
 				roll = false;
@@ -1590,12 +1590,12 @@ public:
 				{
 					break;
 				}
-				Text::printOut("While you are walking you find a bee hive.\n");
-				Text::printOut(" ... you could eat the honey, but how good of an idea is this?\n");
+				Text::printOut("While you are walking you find a bee hive.\n", player.getSanity());
+				Text::printOut(" ... you could eat the honey, but how good of an idea is this?\n", player.getSanity());
 
-				Text::printOut("\n1. Light a fire and smoke the bees out.\n");
-				Text::printOut("2. Just grab a handful of honey and run.\n");
-				Text::printOut("3. Leave, you aren't that despirate yet.\n");
+				Text::printOut("\n1. Light a fire and smoke the bees out.\n", player.getSanity());
+				Text::printOut("2. Just grab a handful of honey and run.\n", player.getSanity());
+				Text::printOut("3. Leave, you aren't that despirate yet.\n", player.getSanity());
 
 				Text::printOut(">");
 				cin >> keepAns;
@@ -1605,7 +1605,7 @@ public:
 
 				while (cin.fail() || (keepAns != '1' && keepAns != '2' && keepAns != '3'))
 				{
-					Text::printOut("Invalid entry, enter only 1, 2, or 3.\n");
+					Text::printOut("Invalid entry, enter only 1, 2, or 3.\n", player.getSanity());
 					Text::printOut(">");
 					cin >> keepAns;
 					cin.ignore(1000, '\n');
@@ -1615,19 +1615,19 @@ public:
 				{
 					amountAquired = (rand() % 4) + 1;
 
-					Text::printOut("Found (" + to_string(amountAquired) + ") honey.\n");
+					Text::printOut("Found (" + to_string(amountAquired) + ") honey.\n", player.getSanity());
 
 					honey.amount += amountAquired;
 
 					PlaySound(TEXT("itemize.wav"), NULL, SND_ASYNC);
 
-					Text::printOut("\tYou have (" + to_string(honey.amount) + ") total.");
+					Text::printOut("\tYou have (" + to_string(honey.amount) + ") total.", player.getSanity());
 
 					switch ((rand() % 2) + 1)
 					{
 					case 1:
-						Text::printOut("\n... you also got stung a bit.\n");
-						Text::printOut("\t-10 happiness.\n");
+						Text::printOut("\n... you also got stung a bit.\n", player.getSanity());
+						Text::printOut("\t-10 happiness.\n", player.getSanity());
 
 						player.happiness -= 10;
 						player.happiness = Player::percentRestraint(player.happiness);
@@ -1638,18 +1638,18 @@ public:
 				}
 				else if (toupper(keepAns) == '2')
 				{
-					Text::printOut("... you didn't get any honey.\n");
-					Text::printOut("... you also got stung a lot.\n");
-					Text::printOut("\t-20 happiness.\n");
+					Text::printOut("... you didn't get any honey.\n", player.getSanity());
+					Text::printOut("... you also got stung a lot.\n", player.getSanity());
+					Text::printOut("\t-20 happiness.\n", player.getSanity());
 
 					player.happiness -= 20;
 					player.happiness = Player::percentRestraint(player.happiness);
 
-					Text::printOut("\nThat was really stupid.\n");
+					Text::printOut("\nThat was really stupid.\n", player.getSanity());
 				}
 				else
 				{
-					Text::printOut("\nYou leave it behind.");
+					Text::printOut("\nYou leave it behind.", player.getSanity());
 
 				}
 
@@ -1665,16 +1665,16 @@ public:
 					break;
 				}
 
-				Text::printOut("While you are walking you find a raspberry bush.\n");
+				Text::printOut("While you are walking you find a raspberry bush.\n", player.getSanity());
 
 				amountAquired = (rand() % 5) + 1;
 
-				Text::printOut("Found (" + to_string(amountAquired) + ") ounces of raspberries.\n");
+				Text::printOut("Found (" + to_string(amountAquired) + ") ounces of raspberries.\n", player.getSanity());
 
 				raspberries.amount += amountAquired;
 
 				PlaySound(TEXT("itemize.wav"), NULL, SND_ASYNC);
-				Text::printOut("\tYou have (" + to_string(raspberries.amount) + ") total.");
+				Text::printOut("\tYou have (" + to_string(raspberries.amount) + ") total.", player.getSanity());
 
 
 				roll = false;
@@ -1700,10 +1700,10 @@ public:
 					break;
 				}
 
-				Text::printOut("While you are walking you stumble across some (edible) mushrooms.\n");
+				Text::printOut("While you are walking you stumble across some (edible) mushrooms.\n", player.getSanity());
 				amountAquired = (rand() % 9) + 1;
 
-				Text::printOut("Found (" + to_string(amountAquired) + ") morels.\n");
+				Text::printOut("Found (" + to_string(amountAquired) + ") morels.\n", player.getSanity());
 
 				randRisk = (rand() % 100) + 1;
 
@@ -1712,10 +1712,10 @@ public:
 					switch (rand() % 2)
 					{
 					case 0:
-						Text::printOut("\n... They might actually be something else similar, it's hard to say. Should you keep them?");
+						Text::printOut("\n... They might actually be something else similar, it's hard to say. Should you keep them?", player.getSanity());
 						break;
 					case 1:
-						Text::printOut("\n\n... You're only mostly sure they're shaggy mane though.\nProbably safe to keep right?");
+						Text::printOut("\n\n... You're only mostly sure they're morels though.\nProbably safe to keep right?", player.getSanity());
 						break;
 					}
 
@@ -1729,7 +1729,7 @@ public:
 
 					while (cin.fail() || (toupper(keepAns) != 'Y' && toupper(keepAns) != 'N'))
 					{
-						Text::printOut("\nInvalid entry, enter only Y or N.\n");
+						Text::printOut("\nInvalid entry, enter only Y or N.\n", player.getSanity());
 						Text::printOut(">");
 						cin >> keepAns;
 						cin.ignore(1000, '\n');
@@ -1744,7 +1744,7 @@ public:
 					}
 					else
 					{
-						Text::printOut("\nYou throw them away, seems like a waste, but better to be safe right?");
+						Text::printOut("\nYou throw them away, seems like a waste, but better to be safe right?", player.getSanity());
 					}
 
 
@@ -1789,16 +1789,16 @@ public:
 					break;
 				}
 
-				Text::printOut("While you are walking you find some (edible) fungus.\n");
+				Text::printOut("While you are walking you find some (edible) fungus.\n", player.getSanity());
 
 				amountAquired = (rand() % 4) + 1;
 
-				Text::printOut("Found (" + to_string(amountAquired) + ") ounces of Chicken of the Woods.\n");
+				Text::printOut("Found (" + to_string(amountAquired) + ") ounces of Chicken of the Woods.\n", player.getSanity());
 
 				chickenOfWoods.amount += amountAquired;
 
 				PlaySound(TEXT("itemize.wav"), NULL, SND_ASYNC);
-				Text::printOut("\tYou have (" + to_string(chickenOfWoods.amount) + ") total.");
+				Text::printOut("\tYou have (" + to_string(chickenOfWoods.amount) + ") total.", player.getSanity());
 
 				roll = false;
 				break;

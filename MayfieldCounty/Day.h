@@ -41,7 +41,8 @@ public:
 		dayNumber++;
 		totalDays++;
 
-		if (dayNumber > 10 && seasonNum != 4 || dayNumber > 30)
+		//2 and 4 were 10 and 40
+		if (dayNumber > 2 && seasonNum != 4 || dayNumber > 4)
 		{
 			dayNumber = 1;
 

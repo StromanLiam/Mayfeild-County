@@ -770,18 +770,18 @@ public:
 		{
 			system("CLS");
 
-			Text::printOut("INVENTORY\n");
+			Text::printOut("INVENTORY\n", player.getSanity());
 
 
-			Text::printOut("Hunger " + to_string(player.hunger) + " % Thirst " + to_string(player.thirst) + " % Energy " + to_string(player.energy));
+			Text::printOut("Hunger " + to_string(player.hunger) + " % Thirst " + to_string(player.thirst) + " % Energy " + to_string(player.energy), player.getSanity());
 
 			if (day.seasonNum == 4)
 			{
-				Text::printOut(" Warmth " + to_string(player.warmth) + "%\n\n");
+				Text::printOut(" Warmth " + to_string(player.warmth) + "%\n\n", player.getSanity());
 			}
 			else
 			{
-				Text::printOut("%\n\n");
+				Text::printOut("%\n\n", player.getSanity());
 			}
 
 			for (int i = 0; i < LENGTH; i++)
@@ -789,21 +789,21 @@ public:
 				if (allItems[i].amount > 0)
 				{
 
-					Text::printOut("\t" + to_string(i + 1) + ". " + allItems[i].name + ": (" + to_string(allItems[i].amount) + ") " + allItems[i].collectiveNoun + ".\n\n");
+					Text::printOut("\t" + to_string(i + 1) + ". " + allItems[i].name + ": (" + to_string(allItems[i].amount) + ") " + allItems[i].collectiveNoun + ".\n\n", player.getSanity());
 				}
 			}
 
-			Text::printOut("NOTICE: new and improved menu that took 6+ hours to debug!\nYou can enter the name of the item now!\n\n");
+			Text::printOut("NOTICE: new and improved menu that took 6+ hours to debug!\nYou can enter the name of the item now!\n\n", player.getSanity());
 
 			if (throwAwayMode)
 			{
-				Text::printOut("Enter item number OR item name to throw away, or enter 0 to exit throw away mode.\n");
-				Text::printOut("Enter \'L\' to leave this menu.\n");
+				Text::printOut("Enter item number OR item name to throw away, or enter 0 to exit throw away mode.\n", player.getSanity());
+				Text::printOut("Enter \'L\' to leave this menu.\n", player.getSanity());
 			}
 			else
 			{
-				Text::printOut("Enter item number OR item name to consume, or enter 0 to throw something away.\n");
-				Text::printOut("Enter \'L\' to leave this menu.\n");
+				Text::printOut("Enter item number OR item name to consume, or enter 0 to throw something away.\n", player.getSanity());
+				Text::printOut("Enter \'L\' to leave this menu.\n", player.getSanity());
 			}
 
 
@@ -924,7 +924,7 @@ public:
 					}
 					else
 					{
-						Text::printOut("No such item exists\n");
+						Text::printOut("No such item exists\n", player.getSanity());
 
 					}
 				}
@@ -964,7 +964,7 @@ public:
 								// letter iterator gets through the word and it's the last word
 								if (i == LENGTH - 1)
 								{
-									Text::printOut("No such item exists\n");
+									Text::printOut("No such item exists\n", player.getSanity());
 								}
 							}
 
@@ -1016,11 +1016,11 @@ public:
 		{
 			if (!item.isEdible)
 			{
-				Text::printOut("You can't eat " + item.name + ", you silly sausage.\n");
+				Text::printOut("You can't eat " + item.name + ", you silly sausage.\n", player.getSanity());
 			}
 			else if (item.amount < 1)
 			{
-				Text::printOut("You are currently out of " + item.name + ".\n");
+				Text::printOut("You are currently out of " + item.name + ".\n", player.getSanity());
 			}
 			else
 			{
@@ -1057,47 +1057,47 @@ public:
 					item.riskFactor = 0;
 				}
 
-				Text::printOut("You eat one " + item.name + ".\n");
+				Text::printOut("You eat one " + item.name + ".\n", player.getSanity());
 
 				if (item.hungerValue > 0)
 				{
-					Text::printOut("\t+" + to_string(item.hungerValue) + "% hunger\n");
-					Text::printOut("\t\tTotal Hunger: " + to_string(player.hunger) + "\n");
+					Text::printOut("\t+" + to_string(item.hungerValue) + "% hunger\n", player.getSanity());
+					Text::printOut("\t\tTotal Hunger: " + to_string(player.hunger) + "\n", player.getSanity());
 				}
 
 
 				if (item.thirstValue > 0)
 				{
-					Text::printOut("\t+" + to_string(item.thirstValue) + "% thirst\n");
-					Text::printOut("\t\tTotal Thirst: " + to_string(player.thirst) + "\n");
+					Text::printOut("\t+" + to_string(item.thirstValue) + "% thirst\n", player.getSanity());
+					Text::printOut("\t\tTotal Thirst: " + to_string(player.thirst) + "\n", player.getSanity());
 				}
 
 				if (item.energyValue > 0)
 				{
-					Text::printOut("\t+" + to_string(item.energyValue) + "% energy\n");
-					Text::printOut("\t\tTotal Energy: " + to_string(player.energy) + "\n");
+					Text::printOut("\t+" + to_string(item.energyValue) + "% energy\n", player.getSanity());
+					Text::printOut("\t\tTotal Energy: " + to_string(player.energy) + "\n", player.getSanity());
 				}
 
 				if (item.happinessValue > 0)
 				{
-					Text::printOut("\t+" + to_string(item.happinessValue) + "% happiness\n");
-					Text::printOut("\t\tTotal Happiness: " + to_string(player.happiness) + "\n");
+					Text::printOut("\t+" + to_string(item.happinessValue) + "% happiness\n", player.getSanity());
+					Text::printOut("\t\tTotal Happiness: " + to_string(player.happiness) + "\n", player.getSanity());
 				}
 
-				if (item.warmthValue > 0)
+				if (item.warmthValue > 0 && day.seasonNum == 4)
 				{
-					Text::printOut("\t+" + to_string(item.warmthValue) + "% warmth\n");
-					Text::printOut("\t\tTotal Warmth: " + to_string(player.warmth) + "\n");
+					Text::printOut("\t+" + to_string(item.warmthValue) + "% warmth\n", player.getSanity());
+					Text::printOut("\t\tTotal Warmth: " + to_string(player.warmth) + "\n", player.getSanity());
 				}
 
 				if (rabbitCure)
 				{
-					Text::printOut("Rabbit Starvation cured\n");
+					Text::printOut("Rabbit Starvation cured\n", player.getSanity());
 				}
 
 				if (item.fatValue < 1 && player.rabbitCounter > 0 && player.hunger == 100 - (player.rabbitCounter))
 				{
-					Text::printOut("\n... You eat, but it does not satiate you.\n");
+					Text::printOut("\n... You eat, but it does not satiate you.\n", player.getSanity());
 				}
 
 
@@ -1124,13 +1124,13 @@ public:
 				{
 					if (player.isInjured)
 					{
-						Text::printOut("Injury Cured.\n");
+						Text::printOut("Injury Cured.\n", player.getSanity());
 						player.isInjured = false;
 						day.updateInfo = true;
 					}
 					else
 					{
-						Text::printOut("This has no effect.\n");
+						Text::printOut("This has no effect.\n", player.getSanity());
 					}
 				}
 
@@ -1138,13 +1138,13 @@ public:
 				{
 					if (player.hasInfection)
 					{
-						Text::printOut("Infection Cured.\n");
+						Text::printOut("Infection Cured.\n", player.getSanity());
 						player.hasInfection = false;
 						day.updateInfo = true;
 					}
 					else
 					{
-						Text::printOut("This has no effect.\n");
+						Text::printOut("This has no effect.\n", player.getSanity());
 					}
 				}
 
@@ -1152,13 +1152,13 @@ public:
 				{
 					if (player.isPoisoned)
 					{
-						Text::printOut("Poisoning Cured.\n");
+						Text::printOut("Poisoning Cured.\n", player.getSanity());
 						player.isPoisoned = false;
 						day.updateInfo = true;
 					}
 					else
 					{
-						Text::printOut("This has no effect.\n");
+						Text::printOut("This has no effect.\n", player.getSanity());
 					}
 				}
 
@@ -1166,11 +1166,11 @@ public:
 				{
 					if (player.rabiesCure || player.rabiesDeath)
 					{
-						Text::printOut("This has no effect.\n");
+						Text::printOut("This has no effect.\n", player.getSanity());
 					}
 					else
 					{
-						Text::printOut("Rabies Cured.\n");
+						Text::printOut("Rabies Cured.\n", player.getSanity());
 						player.hasRabies = false;
 						day.updateInfo = true;
 						player.rabiesCure = true;
@@ -1186,7 +1186,7 @@ public:
 
 					PlaySound(TEXT("pufferfish.wav"), NULL, SND_ASYNC);
 
-					Text::printOut("... that was awful.\n\t -10 Happiness\n");
+					Text::printOut("... that was awful.\n\t -10 Happiness\n", player.getSanity());
 				}
 
 				if (item.isAlcoholic)
@@ -1204,7 +1204,7 @@ public:
 		}
 		else
 		{
-			Text::printOut("Are you sure you want to throw away all of your " + item.name + "? (Y/N)\n");
+			Text::printOut("Are you sure you want to throw away all of your " + item.name + "? (Y/N)\n", player.getSanity());
 			Text::printOut(">");
 			cin >> keepAns;
 			cin.ignore(1000, '\n');
@@ -1213,7 +1213,7 @@ public:
 
 			while (cin.fail() || (toupper(keepAns) != 'Y' && toupper(keepAns) != 'N'))
 			{
-				Text::printOut("\nInvalid entry, enter only Y or N.\n");
+				Text::printOut("\nInvalid entry, enter only Y or N.\n", player.getSanity());
 				Text::printOut(">");
 				cin >> keepAns;
 				cin.ignore(1000, '\n');
@@ -1224,7 +1224,7 @@ public:
 				item.amount = 0;
 				item.riskFactor = 0;
 
-				Text::printOut("You throw away your " + item.name + ".\n");
+				Text::printOut("You throw away your " + item.name + ".\n", player.getSanity());
 			}
 		}
 
@@ -1239,32 +1239,32 @@ public:
 	static void maul(string beastName, int dangerLevel, Day day, Player& player, Item& bullet)
 	{
 
-		Text::printOut("The " + beastName + " pins you down on the ground.\n");
+		Text::printOut("The " + beastName + " pins you down on the ground.\n", player.getSanity());
 
 		switch (rand() % dangerLevel)
 		{
 		case 0:
-			Text::printOut("It utterly rips you to shreads.\n\n");
+			Text::printOut("It utterly rips you to shreads.\n\n", player.getSanity());
 
 			player.maulDeath = true;
 
 			break;
 		default:
-			Text::printOut("You struggle and thrash to fight the " + beastName + ".\n");
+			Text::printOut("You struggle and thrash to fight the " + beastName + ".\n", player.getSanity());
 
 			if (player.hasHuntingRifle && bullet.amount > 0)
 			{
-				Text::printOut("You manage to get your gun out and shoot it.\n");
+				Text::printOut("You manage to get your gun out and shoot it.\n", player.getSanity());
 			}
 			else
 			{
-				Text::printOut("You stab at it with your knife until it collapses.\n");
+				Text::printOut("You stab at it with your knife until it collapses.\n", player.getSanity());
 			}
 
-			Text::printOut("\nStill alive, you stumble your way home.\n");
-			Text::printOut("\t-30 energy\n");
-			Text::printOut("\t-20 happiness.\n");
-			Text::printOut("\t-20 sanity\n");
+			Text::printOut("\nStill alive, you stumble your way home.\n", player.getSanity());
+			Text::printOut("\t-30 energy\n", player.getSanity());
+			Text::printOut("\t-20 happiness.\n", player.getSanity());
+			Text::printOut("\t-20 sanity\n", player.getSanity());
 
 			player.isInjured = true;
 
@@ -1287,21 +1287,21 @@ public:
 		switch (player.drunkCounter)
 		{
 		case 1:
-			day.drunkInformation = "You're feeling a bit tipsy.\n";
+			day.drunkInformation = "You're feeling a bit tipsy.\n", player.getSanity();
 			break;
 		case 2:
-			day.drunkInformation = "You're kinda drunk now.\n";
+			day.drunkInformation = "You're kinda drunk now.\n", player.getSanity();
 			player.energy -= 15;
 			player.energy = Player::percentRestraint(player.energy);
 			break;
 		case 3:
-			day.drunkInformation = "You're quite sloshed.\n";
+			day.drunkInformation = "You're quite sloshed.\n", player.getSanity();
 			player.energy -= 30;
 			player.energy = Player::percentRestraint(player.energy);
 			player.hasHangover = true;
 			break;
 		default:
-			day.drunkInformation = "Error in playerDrunk()\n";
+			day.drunkInformation = "Error in playerDrunk()\n", player.getSanity();
 			break;
 		}
 	}

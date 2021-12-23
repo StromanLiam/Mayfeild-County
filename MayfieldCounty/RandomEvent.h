@@ -68,15 +68,15 @@ public:
                     break;
                 }
 
-                Text::printOut("You encounter a dog who seems to be acting strangely.\n");
-                Text::printOut("He looks sick, he's seen better days.\n");
-                Text::printOut("He foams at the mouth.\n\n");
+                Text::printOut("You encounter a dog who seems to be acting strangely.\n", player.getSanity());
+                Text::printOut("He looks sick, he's seen better days.\n", player.getSanity());
+                Text::printOut("He foams at the mouth.\n\n", player.getSanity());
 
-                Text::printOut("What will you do?\n\n");
+                Text::printOut("What will you do?\n\n", player.getSanity());
 
-                Text::printOut("\t1. Approach the dog, he might need help.\n\n");
-                Text::printOut("\t2. Shoot the dog, he could be dangerous.\n\n");
-                Text::printOut("\t3. Best to keep your distance. Just leave.\n\n");
+                Text::printOut("\t1. Approach the dog, he might need help.\n\n", player.getSanity());
+                Text::printOut("\t2. Shoot the dog, he could be dangerous.\n\n", player.getSanity());
+                Text::printOut("\t3. Best to keep your distance. Just leave.\n\n", player.getSanity());
 
 
                 while (invalidAnswer)
@@ -91,7 +91,7 @@ public:
                     {
                         cin.clear();
                         cin.ignore(500, '\n');
-                        Text::printOut("Invalid entry, enter 1 2 or 3.\n");
+                        Text::printOut("Invalid entry, enter 1 2 or 3.\n", player.getSanity());
                         Text::printOut(">");
                         cin >> eventChoice;
                         cin.ignore(1000, '\n');
@@ -99,11 +99,11 @@ public:
 
                     if (eventChoice == 2 && !player.hasHuntingRifle)
                     {
-                        Text::printOut("You don't have a gun, enter 1 or 3.\n");
+                        Text::printOut("You don't have a gun, enter 1 or 3.\n", player.getSanity());
                     }
                     else if (eventChoice == 2 && bullet.amount < 1)
                     {
-                        Text::printOut("You're out of bullets, enter 1 or 3.\n");
+                        Text::printOut("You're out of bullets, enter 1 or 3.\n", player.getSanity());
                     }
                     else
                     {
@@ -118,13 +118,13 @@ public:
                     if (rand() % 2)
                     {
 
-                        Text::printOut("The dog growls at you, your instincts tell you to take your hand away.\nYou leave him be.\n");
+                        Text::printOut("The dog growls at you, your instincts tell you to take your hand away.\nYou leave him be.\n", player.getSanity());
 
 
                     }
                     else
                     {
-                        Text::printOut("The dog attacks you.\nYou recieve some nasty bites but get away.\n");
+                        Text::printOut("The dog attacks you.\nYou recieve some nasty bites but get away.\n", player.getSanity());
 
                         player.isInjured = true;
 
@@ -144,7 +144,7 @@ public:
                     break;
                 case 2:
 
-                    Text::printOut("You shoot the dog.\n You think about what you've become.\n\t-20 sanity.\n\t-10 happiness.\n");
+                    Text::printOut("You shoot the dog.\n You think about what you've become.\n\t-20 sanity.\n\t-10 happiness.\n", player.getSanity());
 
 
                     player.sanity -= 20;
@@ -157,7 +157,7 @@ public:
 
                     break;
                 case 3:
-                    Text::printOut("You leave the area.\n");
+                    Text::printOut("You leave the area.\n", player.getSanity());
                     break;
                 }
                 roll = false;
@@ -178,11 +178,11 @@ public:
                     break;
                 }
 
-                Text::printOut("You encounter a dog, he seems friendly.\n\n");
+                Text::printOut("You encounter a dog, he seems friendly.\n\n", player.getSanity());
 
                 Text::printOut(player.dog + "\n\n");
 
-                Text::printOut("1. You try to befriend the dog, he could be useful.\n2. Move along, he could be dangerous.\n3. Shoot it. You never know when you'll run out of food.\n");
+                Text::printOut("1. You try to befriend the dog, he could be useful.\n2. Move along, he could be dangerous.\n3. Shoot it. You never know when you'll run out of food.\n", player.getSanity());
 
                 while (invalidAnswer)
                 {
@@ -196,7 +196,7 @@ public:
                     {
                         cin.clear();
                         cin.ignore(500, '\n');
-                        Text::printOut("Invalid entry, enter 1 2 or 3.\n");
+                        Text::printOut("Invalid entry, enter 1 2 or 3.\n", player.getSanity());
                         Text::printOut(">");
                         cin >> eventChoice;
                         cin.ignore(1000, '\n');
@@ -204,11 +204,11 @@ public:
 
                     if (eventChoice == 3 && !player.hasHuntingRifle)
                     {
-                        Text::printOut("You don't have a gun, enter 1 or 2.\n");
+                        Text::printOut("You don't have a gun, enter 1 or 2.\n", player.getSanity());
                     }
                     else if (eventChoice == 3 && bullet.amount < 1)
                     {
-                        Text::printOut("You're out of bullets, enter 1 or 2.\n");
+                        Text::printOut("You're out of bullets, enter 1 or 2.\n", player.getSanity());
                     }
                     else
                     {
@@ -220,7 +220,7 @@ public:
                 {
                 case 1:
 
-                    Text::printOut("You pet the dog, and he likes you.\nHe follows you home.\n\t+20 happiness\n\t+10 sanity\n");
+                    Text::printOut("You pet the dog, and he likes you.\nHe follows you home.\n\t+20 happiness\n\t+10 sanity\n", player.getSanity());
 
                     player.hasTheDog = true;
 
@@ -236,7 +236,7 @@ public:
 
                     while (invalidAnswer)
                     {
-                        Text::printOut("\nWhat would you like to name him?\n");
+                        Text::printOut("\nWhat would you like to name him?\n", player.getSanity());
 
                         //cin.clear();
                         //cin.ignore(500, '\n');
@@ -251,7 +251,7 @@ public:
                         //cin.clear();
                        // cin.ignore(500, '\n');
 
-                        Text::printOut("Are you sure? (Y/N)\n");
+                        Text::printOut("Are you sure? (Y/N)\n", player.getSanity());
                         Text::printOut(">");
 
                         cin >> picker;
@@ -267,7 +267,7 @@ public:
                         case 'N':
                             break;
                         default:
-                            Text::printOut("Invalid entry, enter Y or N.\n");
+                            Text::printOut("Invalid entry, enter Y or N.\n", player.getSanity());
                             break;
                         }
 
@@ -282,7 +282,7 @@ public:
                     break;
                 case 3:
 
-                    Text::printOut("You shoot the dog.\n You think about what you've become.\n\t-20 sanity.\n\t-10 happiness.\n");
+                    Text::printOut("You shoot the dog.\n You think about what you've become.\n\t-20 sanity.\n\t-10 happiness.\n", player.getSanity());
 
 
                     PlaySound(TEXT("scary.wav"), NULL, SND_ASYNC);
@@ -295,11 +295,11 @@ public:
 
                     amountAquired = (rand() % 2) + 1;
 
-                    Text::printOut("Found (" + to_string(amountAquired) + ") dog meat.\n");
+                    Text::printOut("Found (" + to_string(amountAquired) + ") dog meat.\n", player.getSanity());
 
                     dogMeat.amount += amountAquired;
 
-                    Text::printOut("\tYou have (" + to_string(dogMeat.amount) + ") total.\n");
+                    Text::printOut("\tYou have (" + to_string(dogMeat.amount) + ") total.\n", player.getSanity());
 
                     bullet.amount -= amountAquired;
                     break;
@@ -318,25 +318,25 @@ public:
                     break;
                 }
 
-                Text::printOut("You meet a manikin named Delores.\n");
+                Text::printOut("You meet a manikin named Delores.\n", player.getSanity());
 
                 switch (rand() % 3 + 1)
                 {
                 case 1:
-                    Text::printOut("She's looking very fine today.\n");
+                    Text::printOut("She's looking very fine today.\n", player.getSanity());
                     break;
                 case 2:
-                    Text::printOut("You gossip about the mannikens accross the street.\n");
+                    Text::printOut("You gossip about the mannikens accross the street.\n", player.getSanity());
                     break;
                 case 3:
-                    Text::printOut("She tells you about the time she saw a deer the other day.\n");
+                    Text::printOut("She tells you about the time she saw a deer the other day.\n", player.getSanity());
                     break;
                 case 4:
-                    Text::printOut("She makes a really good joke.\nYou think about it for the rest of the day.\n");
+                    Text::printOut("She makes a really good joke.\nYou think about it for the rest of the day.\n", player.getSanity());
                     break;
                 }
 
-                Text::printOut("\t+20 happiness\n\t+10 sanity\n");
+                Text::printOut("\t+20 happiness\n\t+10 sanity\n", player.getSanity());
 
 
                 player.happiness += 20;
@@ -357,7 +357,7 @@ public:
                     break;
                 }
 
-                Text::printOut("You find a movie you used to watch.\n\t+10 happiness\n");
+                Text::printOut("You find a movie you used to watch.\n\t+10 happiness\n", player.getSanity());
 
                 player.happiness += 10;
                 player.happiness = Player::percentRestraint(player.happiness);
@@ -374,7 +374,7 @@ public:
                     break;
                 }
 
-                Text::printOut("You break some glass to break into an empty mall.\nYou do sloppy job and get a nasty cut on the hand.\nIt looks serious.\n");
+                Text::printOut("You break some glass to break into an empty mall.\nYou do sloppy job and get a nasty cut on the hand.\nIt looks serious.\n", player.getSanity());
 
                 PlaySound(TEXT("scary.wav"), NULL, SND_ASYNC);
 
@@ -400,13 +400,13 @@ public:
                     break;
                 }
 
-                Text::printOut("There's a stray cat in your neighborhood.\n");
+                Text::printOut("There's a stray cat in your neighborhood.\n", player.getSanity());
 
                 Text::printOut(player.cat + "\n\n");
 
-                Text::printOut("1. Leave out some food for the cat, she might be nice to have around.\n");
-                Text::printOut("2. Ignore it, you've got to take care of yourself first.\n");
-                Text::printOut("3. Shoot it. You never know when you'll run out of food.\n");
+                Text::printOut("1. Leave out some food for the cat, she might be nice to have around.\n", player.getSanity());
+                Text::printOut("2. Ignore it, you've got to take care of yourself first.\n", player.getSanity());
+                Text::printOut("3. Shoot it. You never know when you'll run out of food.\n", player.getSanity());
 
                 while (invalidAnswer)
                 {
@@ -420,7 +420,7 @@ public:
                     {
                         cin.clear();
                         cin.ignore(500, '\n');
-                        Text::printOut("Invalid entry, enter 1 2 or 3.\n");
+                        Text::printOut("Invalid entry, enter 1 2 or 3.\n", player.getSanity());
                         Text::printOut(">");
                         cin >> eventChoice;
                         cin.ignore(1000, '\n');
@@ -428,11 +428,11 @@ public:
 
                     if (eventChoice == 3 && !player.hasHuntingRifle)
                     {
-                        Text::printOut("You don't have a gun, enter 1 or 2.\n");
+                        Text::printOut("You don't have a gun, enter 1 or 2.\n", player.getSanity());
                     }
                     else if (eventChoice == 3 && bullet.amount < 1)
                     {
-                        Text::printOut("You're out of bullets, enter 1 or 2.\n");
+                        Text::printOut("You're out of bullets, enter 1 or 2.\n", player.getSanity());
                     }
                     else
                     {
@@ -444,11 +444,11 @@ public:
                 {
                 case 1:
 
-                    Text::printOut("You lure the cat with food and give her a good scratch behind the ears.\nNow she likes you.\n");
+                    Text::printOut("You lure the cat with food and give her a good scratch behind the ears.\nNow she likes you.\n", player.getSanity());
 
                     player.hasTheCat = true;
 
-                    Text::printOut("\t+20 happiness\n\t+10 sanity\n");
+                    Text::printOut("\t+20 happiness\n\t+10 sanity\n", player.getSanity());
 
                     player.happiness += 20;
                     player.sanity += 10;
@@ -462,7 +462,7 @@ public:
 
                     while (invalidAnswer)
                     {
-                        Text::printOut("\nWhat would you like to name her?\n");
+                        Text::printOut("\nWhat would you like to name her?\n", player.getSanity());
 
                         //cin.clear();
                         //cin.ignore(500, '\n');
@@ -477,7 +477,7 @@ public:
                         //cin.clear();
                        // cin.ignore(500, '\n');
 
-                        Text::printOut("Are you sure? (Y/N)?\n");
+                        Text::printOut("Are you sure? (Y/N)?\n", player.getSanity());
                         Text::printOut(">");
                         cin >> picker;
                         cin.ignore(1000, '\n');
@@ -492,7 +492,7 @@ public:
                         case 'N':
                             break;
                         default:
-                            Text::printOut("Invalid entry, enter Y or N.\n");
+                            Text::printOut("Invalid entry, enter Y or N.\n", player.getSanity());
                             break;
                         }
 
@@ -503,10 +503,10 @@ public:
 
                     break;
                 case 2:
-                    Text::printOut("You walk away\n");
+                    Text::printOut("You walk away\n", player.getSanity());
                     break;
                 case 3:
-                    Text::printOut("You shoot the cat.\nYou think about what you've become.\n\t-20 sanity.\n\t-10 happiness.\n");
+                    Text::printOut("You shoot the cat.\nYou think about what you've become.\n\t-20 sanity.\n\t-10 happiness.\n", player.getSanity());
 
                     PlaySound(TEXT("scary.wav"), NULL, SND_ASYNC);
 
@@ -518,11 +518,11 @@ public:
 
                     amountAquired = (rand() % 2) + 1;
 
-                    Text::printOut("Found (" + to_string(amountAquired) + ") cat meat.\n");
+                    Text::printOut("Found (" + to_string(amountAquired) + ") cat meat.\n", player.getSanity());
 
                     catMeat.amount += amountAquired;
 
-                    Text::printOut("\tYou have (" + to_string(catMeat.amount) + ") total.\n");
+                    Text::printOut("\tYou have (" + to_string(catMeat.amount) + ") total.\n", player.getSanity());
 
                     bullet.amount -= 1;
                     break;
@@ -541,7 +541,7 @@ public:
                     break;
                 }
 
-                Text::printOut("You're alone in a dark empty mall.\nIt's completely quiet.\nYou're reminded of how lonely you are.\n\t-15 Happiness\n\t-15 Sanity\n");
+                Text::printOut("You're alone in a dark empty mall.\nIt's completely quiet.\nYou're reminded of how lonely you are.\n\t-15 Happiness\n\t-15 Sanity\n", player.getSanity());
 
                 PlaySound(TEXT("scary.wav"), NULL, SND_ASYNC);
 
@@ -567,7 +567,7 @@ public:
                     break;
                 }
 
-                Text::printOut("You hear a wolf howling in the distance.\n\t-15 Sanity\n");
+                Text::printOut("You hear a wolf howling in the distance.\n\t-15 Sanity\n", player.getSanity());
 
                 PlaySound(TEXT("scary.wav"), NULL, SND_ASYNC);
 
@@ -586,10 +586,10 @@ public:
                 }
 
 
-                Text::printOut("You find yourself walking through your old highschool.\n");
-                Text::printOut("It's completely quiet, dark and abandoned.\n");
-                Text::printOut("You notice the rotting carcass of a deer in one of the classrooms.\n");
-                Text::printOut("You deside it may be best not to linger here...\n\t-15 Sanity\n");
+                Text::printOut("You find yourself walking through your old highschool.\n", player.getSanity());
+                Text::printOut("It's completely quiet, dark and abandoned.\n", player.getSanity());
+                Text::printOut("You notice the rotting carcass of a deer in one of the classrooms.\n", player.getSanity());
+                Text::printOut("You deside it may be best not to linger here...\n\t-15 Sanity\n", player.getSanity());
 
                 PlaySound(TEXT("scary.wav"), NULL, SND_ASYNC);
 
@@ -614,16 +614,16 @@ public:
                 {
                     break;
                 }
-                Text::printOut("It's around sundown.\n");
-                Text::printOut("You feel a dozen sets of eyes staring at you.\n");
-                Text::printOut("A pack of coyotes has taken an interest.\n");
+                Text::printOut("It's around sundown.\n", player.getSanity());
+                Text::printOut("You feel a dozen sets of eyes staring at you.\n", player.getSanity());
+                Text::printOut("A pack of coyotes has taken an interest.\n", player.getSanity());
 
                 Text::printOut("\n1. Run!\n");
-                Text::printOut("2. Scare them off, raise your arms and scream, shoot bullets off in the air\n");
-                Text::printOut("3. Calmly get into the nearest car and stay until they leave.\n");
-                Text::printOut("4. Gun them down.\n\n");
+                Text::printOut("2. Scare them off, raise your arms and scream, shoot bullets off in the air\n", player.getSanity());
+                Text::printOut("3. Calmly get into the nearest car and stay until they leave.\n", player.getSanity());
+                Text::printOut("4. Gun them down.\n\n", player.getSanity());
 
-                Text::printOut("What will you do?\n");
+                Text::printOut("What will you do?\n", player.getSanity());
 
 
                 invalidAnswer = true;
@@ -658,13 +658,13 @@ public:
                         {
                         case 1:
                             system("CLS");
-                            Text::printOut("The coyotes run you down and begin to maul you.\n");
+                            Text::printOut("The coyotes run you down and begin to maul you.\n", player.getSanity());
                             Item::maul("coyote", 6, day, player, bullet);
                             break;
                         case 2:
                             if ((rand() % 10) + 1 <= 7 || (((rand() % 10) + 1 <= 9) && player.hasHuntingRifle))
                             {
-                                Text::printOut("After a few terrifying moments, you get them to leave.\n\t-20 sanity\n");
+                                Text::printOut("After a few terrifying moments, you get them to leave.\n\t-20 sanity\n", player.getSanity());
 
                                 player.sanity -= 20;
                                 player.sanity = Player::percentRestraint(player.sanity);
@@ -672,17 +672,17 @@ public:
                             else
                             {
                                 system("CLS");
-                                Text::printOut("The coyotes begin to maul you.\n");
+                                Text::printOut("The coyotes begin to maul you.\n", player.getSanity());
                                 Item::maul("coyote", 6, day, player, bullet);
                             }
 
                             break;
                         case 3:
-                            Text::printOut("You smash a car window and open it from the inside.\n");
-                            Text::printOut("Once inside they circle you for a while.\n");
-                            Text::printOut("After a few hours you work up the nerve to leave.\n");
+                            Text::printOut("You smash a car window and open it from the inside.\n", player.getSanity());
+                            Text::printOut("Once inside they circle you for a while.\n", player.getSanity());
+                            Text::printOut("After a few hours you work up the nerve to leave.\n", player.getSanity());
 
-                            Text::printOut("\t-20 sanity\n\t-30 energy\n");
+                            Text::printOut("\t-20 sanity\n\t-30 energy\n", player.getSanity());
 
                             player.sanity -= 20;
                             player.sanity = Player::percentRestraint(player.sanity);
@@ -693,21 +693,21 @@ public:
                         case 4:
                             if (!player.hasHuntingRifle)
                             {
-                                Text::printOut("You have no gun.\nPick 1, 2 or 3.\n");
+                                Text::printOut("You have no gun.\nPick 1, 2 or 3.\n", player.getSanity());
                                 invalidAnswer = true;
                                 break;
                             }
 
                             if (bullet.amount < 1)
                             {
-                                Text::printOut("You have no bullets.\nPick 1, 2 or 3.\n");
+                                Text::printOut("You have no bullets.\nPick 1, 2 or 3.\n", player.getSanity());
                                 invalidAnswer = true;
                                 break;
                             }
 
-                            Text::printOut("You shoot one, and fire off a couple more shots.\n");
-                            Text::printOut("The coyotes realise they're outmatched and run off.\n");
-                            Text::printOut("You're releaved, but a bit shaken.\n\t-15 sanity\n");
+                            Text::printOut("You shoot one, and fire off a couple more shots.\n", player.getSanity());
+                            Text::printOut("The coyotes realise they're outmatched and run off.\n", player.getSanity());
+                            Text::printOut("You're releaved, but a bit shaken.\n\t-15 sanity\n", player.getSanity());
 
                             player.sanity -= 20;
                             player.sanity = Player::percentRestraint(player.sanity);
@@ -730,29 +730,29 @@ public:
 
                 if (day.dayNumber > 1)
                 {
-                    Text::printOut("While searching a neighbourhood, you notice a burned building up ahead.\n");
-                    Text::printOut("Upon further inpection, several buildings have been reduced to cinder.\n");
+                    Text::printOut("While searching a neighbourhood, you notice a burned building up ahead.\n", player.getSanity());
+                    Text::printOut("Upon further inpection, several buildings have been reduced to cinder.\n", player.getSanity());
 
                     if (day.dayNumber > 10)
                     {
-                        Text::printOut("Undergrowth has begun to overtake the buildings,\n");
-                        Text::printOut("though fire damage can still be seen on the trees.\n");
+                        Text::printOut("Undergrowth has begun to overtake the buildings,\n", player.getSanity());
+                        Text::printOut("though fire damage can still be seen on the trees.\n", player.getSanity());
                     }
                     else
                     {
-                        Text::printOut("The surrounding trees and plants have been burned back,\n");
-                        Text::printOut("leaving ground littered with blackened branches and bushes.\n");
+                        Text::printOut("The surrounding trees and plants have been burned back,\n", player.getSanity());
+                        Text::printOut("leaving ground littered with blackened branches and bushes.\n", player.getSanity());
                     }
                 }
                 else
                 {
-                    Text::printOut("While searching a neighbourhood, you notice a burning building up ahead.\n");
-                    Text::printOut("Upon further inpection, several buildings are aflame.\n");
+                    Text::printOut("While searching a neighbourhood, you notice a burning building up ahead.\n", player.getSanity());
+                    Text::printOut("Upon further inpection, several buildings are aflame.\n", player.getSanity());
 
-                    Text::printOut("\nIt's probably a good idea to get out of here.\n");
+                    Text::printOut("\nIt's probably a good idea to get out of here.\n", player.getSanity());
                 }
 
-                Text::printOut("\nSomeone must have left a stove on.\n\t-10 sanity\n");
+                Text::printOut("\nSomeone must have left a stove on.\n\t-10 sanity\n", player.getSanity());
 
                 player.sanity -= 10;
 

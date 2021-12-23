@@ -266,22 +266,22 @@ public:
 
 
 
-	static Location* selectLocation(Location* currentLocation, Location& lensborough, Location& mayfeildCentre, Location& frontSt)
+	static Location* selectLocation(Player &player, Location* currentLocation, Location& lensborough, Location& mayfeildCentre, Location& frontSt)
 	{
 		system("CLS");
 
 		char locationChoice = '&';
 
-		Text::printOut("SELECT LOCATION\n\nCurrent Location: " + currentLocation->locationName + ".\n\n");
+		Text::printOut("SELECT LOCATION\n\nCurrent Location: " + currentLocation->locationName + ".\n\n", player.getSanity());
 
-		Text::printOut("[A] " + lensborough.locationName + "\n\t" + lensborough.breifDesc + "\n\n");
+		Text::printOut("[A] " + lensborough.locationName + "\n\t" + lensborough.breifDesc + "\n\n", player.getSanity());
 
-		Text::printOut("[B] " + mayfeildCentre.locationName + "\n\t" + mayfeildCentre.breifDesc + "\n\n");
+		Text::printOut("[B] " + mayfeildCentre.locationName + "\n\t" + mayfeildCentre.breifDesc + "\n\n", player.getSanity());
 
-		Text::printOut("[C] " + frontSt.locationName + "\n\t" + frontSt.breifDesc + "\n\n");
+		Text::printOut("[C] " + frontSt.locationName + "\n\t" + frontSt.breifDesc + "\n\n", player.getSanity());
 
 
-		Text::printOut("Enter Location Letter:\n\n");
+		Text::printOut("Enter Location Letter:\n\n", player.getSanity());
 
 		Text::printOut(">");
 		cin >> locationChoice;
@@ -291,7 +291,7 @@ public:
 
 		while (cin.fail() || (toupper(locationChoice) != 'A' && toupper(locationChoice) != 'B' && toupper(locationChoice) != 'C'))
 		{
-			Text::printOut("Enter a single valid letter only\n");
+			Text::printOut("Enter a single valid letter only\n", player.getSanity());
 			Text::printOut(">");
 			cin >> locationChoice;
 			cin.ignore(1000, '\n');
@@ -310,44 +310,44 @@ public:
 			currentLocation = &frontSt;
 			break;
 		default:
-			cout << "Error in selectLocation()\n";
+			cout << "Error in selectLocation()\n", player.getSanity();
 			break;
 		}
 
-		Text::printOut("Location set to: " + currentLocation->locationName + ".\n\n");
+		Text::printOut("Location set to: " + currentLocation->locationName + ".\n\n", player.getSanity());
 
 		system("pause");
 
 		return currentLocation;
 	}
 
-	void locationInfo(Day day)
+	void locationInfo(Player& player, Day day)
 	{
 		system("CLS");
 
-		Text::printOut("You Enter: " + this->locationName + ".\n\n");
+		Text::printOut("You Enter: " + this->locationName + ".\n\n", player.getSanity());
 
 		if (day.seasonNum == 4)
 		{
-			Text::printOut(this->winterDesc);
+			Text::printOut(this->winterDesc, player.getSanity());
 		}
 		else
 		{
 			if (day.dayNumber >= 100)
 			{
-				Text::printOut(this->hundredDesc);
+				Text::printOut(this->hundredDesc, player.getSanity());
 			}
 			else if (day.dayNumber >= 50)
 			{
-				Text::printOut(this->fiftyDesc);
+				Text::printOut(this->fiftyDesc, player.getSanity());
 			}
 			else if (day.dayNumber >= 10)
 			{
-				Text::printOut(this->tenDesc);
+				Text::printOut(this->tenDesc, player.getSanity());
 			}
 			else
 			{
-				Text::printOut(this->zeroDesc);
+				Text::printOut(this->zeroDesc, player.getSanity());
 			}
 		}
 
